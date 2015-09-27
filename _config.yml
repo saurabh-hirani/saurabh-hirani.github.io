@@ -11,7 +11,7 @@ nav:
 
 # Bio settings
 name: "Saurabh Hirani"
-slogan: ""
+slogan: "I believe in <a href='https://en.wikipedia.org/wiki/Don%27t_repeat_yourself'>DRY</a>. I believe in <a href='https://en.wikipedia.org/wiki/Don%27t_repeat_yourself'>DRY</a>"
 description: "The home page of Saurabh Hirani."
 thumbnail_path: "tdb.jpg"
 website_repo_url: "https://github.com/saurabh-hirani/saurabh-hirani.github.io"
