@@ -1,0 +1,48 @@
+# Website settings
+baseurl: "/"
+url: "https://github.com/saurabh-hirani/saurabh-hirani.github.io"
+
+# Internal nav
+nav:
+  main:
+    writing: "/writing"
+  writing:
+    all: "/writing"
+
+# Bio settings
+name: "Saurabh Hirani"
+slogan: ""
+description: "The home page of Saurabh Hirani."
+thumbnail_path: "tdb.jpg"
+website_repo_url: "https://github.com/saurabh-hirani/saurabh-hirani.github.io"
+
+# URLs
+contact_urls:  
+  twitter: 
+    url: "https://twitter.com/sphirani"
+    label: "Twitter"
+    icon: "twitter-square"
+    username: "@sphirani"
+  linkedin: 
+    url: "https://www.linkedin.com/in/shirani"
+    label: "LinkedIn"
+    icon: "linkedin-square"
+  github: 
+    url: "https://github.com/saurabh-hirani/"
+    label: "GitHub"
+    icon: "github-square"
+
+# Jekyll build settings
+paginate: 10
+paginate_path: "/writing/page:num"
+permalink: "/writing/:year/:month/:day/:title"
+sass:
+  sass_dir: "/assets/css"
+  style: :compressed  
+highlighter: pygments
+timezone: 'Asia/Calcutta'
+
+# Plugins (GitHub Pages only support a few)
+gems:
+  - jekyll-redirect-from
+  - jekyll-sitemap

@@ -1,0 +1,197 @@
+@import "settings";
+
+@mixin header-font {
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+}
+
+@mixin body-font {
+  font-family: "Merriweather", serif;
+  -webkit-font-feature-settings: 'kern' 1;
+  -moz-font-feature-settings: 'kern' 1;
+  -o-font-feature-settings: 'kern' 1;
+}
+
+body {
+  @include body-font;
+  color: $body-color;
+  letter-spacing: 0.01rem;
+  line-height: 1.75rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include header-font;
+  color: $header-color;
+}
+
+.tight-line-height {
+  line-height: 1.35rem;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+}
+
+a:hover, a h1:hover, a h2:hover, a h3:hover, a h4:hover, a h5:hover, a h6:hover, .link-hover-color {
+  color: $link-hover-color;
+  text-decoration: none;
+}
+
+a img {
+  border: none;
+}
+
+.hover-background:hover {
+  background-color: $link-hover-color;
+}
+
+.link-color {
+  color: $link-color;
+}
+
+.link-hover-color {
+  color: $link-hover-color;
+}
+
+.bg-link-color {
+  background-color: $link-color;
+}
+
+.bg-link-hover-color {
+  background-color: $link-hover-color;
+}
+
+h1, .h1 { font-size: 2.5rem }
+h2, .h2 { font-size: 1.75rem }
+h3, .h3 { font-size: 1.5rem }
+h4, .h4 { font-size: 1.25rem }
+h5, .h5 { font-size: .875rem }
+h6, .h6 { font-size: .75rem }
+
+.normal-font-size {
+  font-size: $normal-font-size;
+}
+
+.header-font {
+  @include header-font;
+}
+
+.header-color {
+  color: $header-color;
+}
+
+.body-font {
+  @include body-font;
+}
+
+.body-color {
+  color: $body-color;
+}
+
+.page-title {
+  font-size: 3rem;
+}
+
+.container {
+  max-width: 38em;
+}
+
+li {
+  margin: 0.4em 0px;
+}
+
+code {
+  padding: 1px 3px;
+  font-family: Inconsolata, monospace, sans-serif;
+  font-size: 0.85em;
+  border: 1px solid rgb(227, 237, 243);
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  background: rgb(247, 250, 251);
+  border-radius: 2px;
+}
+
+.pt1  { padding-top: $increment; }
+.pr1  { padding-right: $increment; }
+.pb1  { padding-bottom: $increment; }
+.pl1  { padding-left: $increment; }
+
+.pt2  { padding-top: $increment * 2; }
+.pr2  { padding-right: $increment * 2; }
+.pb2  { padding-bottom: $increment * 2; }
+.pl2  { padding-left: $increment * 2; }
+
+.pt3  { padding-top: $increment * 4; }
+.pr3  { padding-right: $increment * 4; }
+.pb3  { padding-bottom: $increment * 4; }
+.pl3  { padding-left: $increment * 4; }
+
+.pt4  { padding-top: $increment * 8; }
+.pr4  { padding-right: $increment * 8; }
+.pb4  { padding-bottom: $increment * 8; }
+.pl4  { padding-left: $increment * 8; }
+
+.pt5  { padding-top: $increment * 16; }
+.pr5  { padding-right: $increment * 16; }
+.pb5  { padding-bottom: $increment * 16; }
+.pl5  { padding-left: $increment * 16; }
+
+.pt6  { padding-top: $increment * 32; }
+.pr6  { padding-right: $increment * 32; }
+.pb6  { padding-bottom: $increment * 32; }
+.pl6  { padding-left: $increment * 32; }
+
+.shadow {
+  box-shadow: 3px 3px 10px 0px rgba(128, 128, 128, 0.4);
+}
+
+.no-line-height {
+  line-height: 0;
+}
+
+blockquote {
+  border-left: 5px $light-gray solid;
+  font-size: $normal-font-size;
+}
+
+blockquote p {
+  font-size: $normal-font-size;
+}
+
+blockquote cite {
+  font-weight: 700;
+}
+
+figure {
+  margin: 1.0rem 0;
+  padding: 0;
+}
+
+figcaption {
+  text-align: center;
+  font-size: 0.75rem;
+  margin-top: -0.4rem;
+  line-height: 1.2rem;
+}
+
+a .circle:hover {
+  border-color: gray;
+}
+
+.valign-top {
+  vertical-align: top;
+}
+
+.valign-middle {
+  vertical-align: middle;
+}
+
+.valign-bottom {
+  vertical-align: bottom;
+}

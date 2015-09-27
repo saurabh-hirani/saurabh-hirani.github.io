@@ -1,0 +1,14 @@
+---
+layout: default
+bottom_include: comments.html
+include_header: post_header.html
+include_comments:
+  embed: true
+  count: true
+---
+
+<article class="post">
+  {{ content }}
+  <div class="mt4 mb4">{% include post-navigation.html %}</div>
+  <div class="mt4">{% include author-share.html %}</div>
+</article>

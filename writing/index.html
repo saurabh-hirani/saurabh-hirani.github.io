@@ -1,0 +1,17 @@
+---
+layout: default
+title: "Saurabh Hirani: Writing"
+redirect_from: "/blog"
+nav_item: writing
+nav_item_writing: all
+header_title: Writing
+include_header: writing_header.html
+include_comments:
+  count: true
+---
+
+{% include writing-nav.html %}
+{% for post in paginator.posts %}
+  {% include post-outline.html post=post %}
+{% endfor %}
+{% include pagination.html %}
