@@ -1,6 +1,6 @@
-# Saurabh Hirani Home Page
+# Saurabh Hirani's Home Page
 
-Forked off with gratitude from https://github.com/brikis98/yevgeniy-brikman-homepage
+Created with gratitude from a fork of https://github.com/brikis98/yevgeniy-brikman-homepage
 
 # License
 
