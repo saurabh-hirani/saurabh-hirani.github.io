@@ -8,6 +8,9 @@ nav:
     writing: "/writing"
   writing:
     all: "/writing"
+    popular: "/writing/popular"
+    tags: "/writing/tags"
+    rss: "/feed.xml"
 
 # Bio settings
 name: "Saurabh Hirani"

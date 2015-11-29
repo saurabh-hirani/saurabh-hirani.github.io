@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Yevgeniy Brikman: Popular Writing"
+nav_item: writing   
+nav_item_writing: popular 
+header_title: Popular posts
+include_header: writing_header.html
+include_comments:
+  count: true
+---
+
+{% include writing-nav.html %}
+
+{% for post in site.posts %}
+  {% if post.add_to_popular_list %}  
+    {% include post-outline.html post=post %}
+  {% endif %}
+{% endfor %}
