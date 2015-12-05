@@ -1,49 +1,50 @@
 # Website settings
-baseurl: "/"
-url: ""
+title: Experiences and Opinions
+url: "http://bhalothia.io"
+
 
 # Internal nav
 nav:
   main:
-    writing: "/writing"
-  writing:
-    all: "/writing"
-    popular: "/writing/popular"
-    tags: "/writing/tags"
+    Writing: "/Writing"
+  Writing:
+    all: "/Writing"
+    popular: "/Writing/popular"
+    tags: "/Writing/tags"
     rss: "/feed.xml"
 
 # Bio settings
-name: "Saurabh Hirani"
-slogan: "Repeat after me - I believe in <a href='https://en.wikipedia.org/wiki/Don%27t_repeat_yourself' target='_blank'>DRY</a>."
-description: "The home page of Saurabh Hirani."
+name: "Virendra Singh Bhalothia"
+slogan: "I'm a DevOps Strategist and Enabler. Currently helping organizations in their DevOps transformation journey via <a href='http://theremotelab.io' target='_blank'>TRL</a>."
+description: "My experiences and opinions."
 thumbnail_path: "tdb.jpg"
-website_repo_url: "https://github.com/saurabh-hirani/saurabh-hirani.github.io"
+website_repo_url: "https://github.com/bhalothia/bhalothia.github.io"
 
 # URLs
-contact_urls:  
-  twitter: 
-    url: "https://twitter.com/sphirani"
+contact_urls:
+  twitter:
+    url: "https://twitter.com/desitude"
     label: "Twitter"
     icon: "twitter-square"
-    username: "@sphirani"
-  linkedin: 
-    url: "https://www.linkedin.com/in/shirani"
+    username: "@desitude"
+  linkedin:
+    url: "https://uk.linkedin.com/in/bhalothia"
     label: "LinkedIn"
     icon: "linkedin-square"
-  github: 
-    url: "https://github.com/saurabh-hirani/"
+  github:
+    url: "https://github.com/bhalothia/"
     label: "GitHub"
     icon: "github-square"
 
 # Jekyll build settings
 paginate: 10
-paginate_path: "/writing/page:num"
-permalink: "/writing/:year/:month/:day/:title"
+paginate_path: "/Writing/page:num"
+permalink: "/Writing/:year/:month/:day/:title"
 sass:
   sass_dir: "/assets/css"
-  style: :compressed  
+  style: :compressed
 highlighter: pygments
-timezone: 'Asia/Calcutta'
+timezone: 'Europe/London'
 
 # Plugins (GitHub Pages only support a few)
 gems:

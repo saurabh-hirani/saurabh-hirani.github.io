@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "Saurabh Hirani: Popular Writing"
-nav_item: writing   
-nav_item_writing: popular 
+title: "Virendra Singh bhalothia: Popular Writing"
+nav_item: writing
+nav_item_writing: popular
 header_title: Popular posts
 include_header: writing_header.html
 include_comments:
@@ -12,7 +12,7 @@ include_comments:
 {% include writing-nav.html %}
 
 {% for post in site.posts %}
-  {% if post.add_to_popular_list %}  
+  {% if post.add_to_popular_list %}
     {% include post-outline.html post=post %}
   {% endif %}
 {% endfor %}
