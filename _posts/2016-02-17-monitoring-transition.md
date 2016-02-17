@@ -21,7 +21,7 @@ The costs incurred by having manually maintained system are immense and worst of
 
 A transparent phased cutover can be planned and executed. But how do you measure the components of the manual setup - how many hosts, hostgroups, checks are running on this system? How many of these hosts are decomissioned or worse, unwanted and still consuming resources? How do you start consolidating unmonitored sources while you are at it? And how do you keep track of changes trickling in the manual setup while you are building an automated solution?
 
-These are just few of the critical questions that you need to answer before putting on your cape and saving the world. There are logical baby steps that can help you show measurable progress at each stage and address these issues. 
+These are just few of the critical questions that you need to answer before you put on your cape and save the world. There are logical baby steps that can help you show measurable progress at each stage and address these issues. 
 
 1. Measure what you have
 
