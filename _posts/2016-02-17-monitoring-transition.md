@@ -10,7 +10,7 @@ tags:
 *"All happy families are alike; each unhappy family is unhappy in its own way."
 - Leo Tolstoy.*
 
-*"All automated monitoring systems work similarly; each manual nagios setup is manual in its own way."
+*"All automated monitoring systems work similarly; each manual nagios setup is manual in its own way."*
 
 If you have ever maintained a manual monitoring setup, you know the gist captured by the above statement. And if you have spent enough time in infrastructure, you will see that the monitoring systems of an organization are often polarized in 2 camps - clean systems built from ground up and handcrafted wizardry fed with generous additions of bandaids every other day. 
 
