@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Monitoring transition, manual => automated => distributed
+title: Monitoring transition - manual => automated => distributed
 author: Saurabh
 tags: 
 - devops
