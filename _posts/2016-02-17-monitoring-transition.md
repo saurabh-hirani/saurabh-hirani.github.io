@@ -29,7 +29,7 @@ These are just few of the critical questions that you need to answer before you 
 
 3. Consolidate your checks
 
-4. Know your sources of truth - AWS, VMware, network devices.
+4. Know your sources of truth - AWS, VMware, network devices, etc. and how you can talk to them through APIs.
 
 5. Break with permission
 
