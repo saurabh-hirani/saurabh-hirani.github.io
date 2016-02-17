@@ -37,4 +37,4 @@ These are just few of the critical questions that you need to answer before putt
 
 I have expanded on these points in my work-in-progress slide deck [here](http://go-talks.appspot.com/github.com/saurabh-hirani/talks/monitoring-transition/monitoring-transition-wip.slide#1)
 
-All of this is easier said than done, but with the right approach and restraint, it is doable. And the paybacks are worth it. Catch me talk about how we accomplished it at Rootconf 2016! 
+All of this is easier said than done, but with the right approach and restraint, it is doable. And the paybacks are worth it. Catch me talk about how we accomplished it at [Rootconf 2016](https://rootconf.in/2016/)! 
