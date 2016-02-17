@@ -11,7 +11,6 @@ tags:
 - Leo Tolstoy.*
 
 *"All automated monitoring systems work similarly; each manual nagios setup is manual in its own way."
-- Me.*
 
 If you have ever maintained a manual monitoring setup, you know the gist captured by the above statement. And if you have spent enough time in infrastructure, you will see that the monitoring systems of an organization are often polarized in 2 camps - clean systems built from ground up and handcrafted wizardry fed with generous additions of bandaids every other day. 
 
