@@ -19,7 +19,7 @@ Everyone wants to have the former and criticize the later, but rarely do you see
 
 The costs incurred by having manually maintained system are immense and worst of all, immeasureable. They gnaw into the productivity of the people maintaining them (never out of choice) and feed on themselves to become unmanageable monsters. At some point you have to take a step back and just kill the beast. But if that beast is your monitoring system - the eyes and ears of your infrastructure - you cannot just shut it down. Because no matter how manual it is - it works.
 
-A transparent phased cutover can be planned and executed. But how do you measure the components of the manual setup - how many hosts, hostgroups, checks are running on this system? How many of these hosts are decomissioned or worse, unwanted and still consumiing resources? How do you start consolidating unmonitored sources while you are at it? And how do you keep track of changes trickling in the manual setup while you are building an automated solution?
+A transparent phased cutover can be planned and executed. But how do you measure the components of the manual setup - how many hosts, hostgroups, checks are running on this system? How many of these hosts are decomissioned or worse, unwanted and still consuming resources? How do you start consolidating unmonitored sources while you are at it? And how do you keep track of changes trickling in the manual setup while you are building an automated solution?
 
 These are just few of the critical questions that you need to answer before putting on your cape and saving the world. There are logical baby steps that can help you show measurable progress at each stage and address these issues. 
 
