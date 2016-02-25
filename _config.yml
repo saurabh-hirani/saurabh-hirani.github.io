@@ -6,6 +6,7 @@ url: ""
 nav:
   main:
     writing: "/writing"
+    speaking: "/speaking"
   writing:
     all: "/writing"
     popular: "/writing/popular"
