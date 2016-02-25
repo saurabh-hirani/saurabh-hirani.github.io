@@ -18,7 +18,7 @@
       url: "http://go-talks.appspot.com/github.com/saurabh-hirani/inframer/docs/inframer-talk-rootconf.slide#1"
     - label: "Github repo"
       url: "https://github.com/BlueJeansNetwork/inframer"
-- name: "Python - Introduction to decorators"
+- name: "Python decorators"
   date: "Saturday, July 21, 2013"
   description: |
     An introduction to python decorators.
