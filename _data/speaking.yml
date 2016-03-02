@@ -1,12 +1,20 @@
+- name: "Monitorng transition - introduction video"
+  date: "Tuesday, April 7, 2015"
+  description: |
+    Introductory video to my Rootconf 2016 talk - https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito
+  embed_url: "//www.youtube.com/embed/CjCkPrPEqWU"
+  links:
+    - label: "Video"
+      url: "https://www.youtube.com/watch?v=CjCkPrPEqWU"
 - name: "Inframer - introduction video"
   date: "Tuesday, April 7, 2015"
   description: |
-    Introductory video to my Rootconf 2015 talk.
+    Introductory video to my Rootconf 2015 talk - https://rootconf.talkfunnel.com/2015/13-inframer-know-thy-infra
   embed_url: "//www.youtube.com/embed/IXPLuzZlwhM"
   links:
     - label: "Video"
       url: "https://www.youtube.com/watch?v=IXPLuzZlwhM"
-- name: "Inframer - know they infra"
+- name: "Inframer - full talk"
   date: "Friday, May 15, 2015"
   description: |
     Inframer is a tool to collect, store and analyze your infrastructure data. 
@@ -28,4 +36,3 @@
       url: "https://www.youtube.com/watch?v=RLbEh7MEKSs"
     - label: "Blog post"
       url: "http://saurabh-hirani.github.io/writing/2013/06/10/thinking-out-aloud-python-decorators_8528"
-
