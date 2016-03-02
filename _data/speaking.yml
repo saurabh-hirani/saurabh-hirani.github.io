@@ -1,17 +1,17 @@
-- name: "Monitorng transition - introduction video"
+- name: "Monitorng transition talk - an introduction"
   date: "Tuesday, April 7, 2015"
   description: |
-    Introductory video to my Rootconf 2016 talk 
+    Introductory video for my Rootconf 2016 talk 
   embed_url: "//www.youtube.com/embed/CjCkPrPEqWU"
   links:
     - label: "Video"
       url: "https://www.youtube.com/watch?v=CjCkPrPEqWU"
     - label: "Summary"
       url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
-- name: "Inframer - introduction video"
+- name: "Inframer talk - an introduction"
   date: "Tuesday, April 7, 2015"
   description: |
-    Introductory video to my Rootconf 2015 talk - https://rootconf.talkfunnel.com/2015/13-inframer-know-thy-infra
+    Introductory video for my Rootconf 2015 talk
   embed_url: "//www.youtube.com/embed/IXPLuzZlwhM"
   links:
     - label: "Video"
