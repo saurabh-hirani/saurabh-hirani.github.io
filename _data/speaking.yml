@@ -1,11 +1,13 @@
 - name: "Monitorng transition - introduction video"
   date: "Tuesday, April 7, 2015"
   description: |
-    Introductory video to my Rootconf 2016 talk - https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito
+    Introductory video to my Rootconf 2016 talk 
   embed_url: "//www.youtube.com/embed/CjCkPrPEqWU"
   links:
     - label: "Video"
       url: "https://www.youtube.com/watch?v=CjCkPrPEqWU"
+    - label: "Summary"
+      url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
 - name: "Inframer - introduction video"
   date: "Tuesday, April 7, 2015"
   description: |
@@ -14,6 +16,8 @@
   links:
     - label: "Video"
       url: "https://www.youtube.com/watch?v=IXPLuzZlwhM"
+    - label: "Summary"
+      url: "https://rootconf.talkfunnel.com/2015/13-inframer-know-thy-infra"
 - name: "Inframer - full talk"
   date: "Friday, May 15, 2015"
   description: |
@@ -22,6 +26,8 @@
   links:
     - label: "Video"
       url: "https://www.youtube.com/watch?v=qB1bGUNzRb4"
+    - label: "Summary"
+      url: "https://rootconf.talkfunnel.com/2015/13-inframer-know-thy-infra"
     - label: "Slides"
       url: "http://go-talks.appspot.com/github.com/saurabh-hirani/inframer/docs/inframer-talk-rootconf.slide#1"
     - label: "Github repo"
