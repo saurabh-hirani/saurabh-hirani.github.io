@@ -43,7 +43,7 @@ permalink: "/Writing/:year/:month/:day/:title"
 sass:
   sass_dir: "/assets/css"
   style: :compressed
-highlighter: pygments
+rouge: pygments
 timezone: 'Europe/London'
 
 # Plugins (GitHub Pages only support a few)
