@@ -2,20 +2,19 @@
 title: Experiences and Opinions
 url: "http://bhalothia.io"
 
-
 # Internal nav
 nav:
   main:
-    Writing: "/Writing"
-  Writing:
-    all: "/Writing"
-    popular: "/Writing/popular"
-    tags: "/Writing/tags"
-    rss: "/feed.xml"
+    writing: "/writing"
+    speaking: "/speaking"
+  writing:
+    all: "/writing"
+    popular: "/writing/popular"
+    tags: "/writing/tags"
 
 # Bio settings
 name: "Virendra Singh Bhalothia"
-slogan: "I'm a DevOps Strategist and Enabler. Currently helping organizations in their DevOps transformation journey via <a href='http://theremotelab.io' target='_blank'>TRL</a>."
+slogan: "I'm a DevOps Strategist and Enabler. Currently helping organizations in their DevOps transformation journey via <a href='http://theremotelab.com' target='_blank'>TRL</a>."
 description: "My experiences and opinions."
 thumbnail_path: "tdb.jpg"
 website_repo_url: "https://github.com/bhalothia/bhalothia.github.io"
@@ -26,7 +25,7 @@ contact_urls:
     url: "https://twitter.com/bhalothiaa"
     label: "Twitter"
     icon: "twitter-square"
-    username: "@desitude"
+    username: "@bhalothiaa"
   linkedin:
     url: "https://uk.linkedin.com/in/bhalothia"
     label: "LinkedIn"
@@ -38,8 +37,8 @@ contact_urls:
 
 # Jekyll build settings
 paginate: 10
-paginate_path: "/Writing/page:num"
-permalink: "/Writing/:year/:month/:day/:title"
+paginate_path: "/writing/page:num"
+permalink: "/writing/:year/:month/:day/:title"
 sass:
   sass_dir: "/assets/css"
   style: :compressed

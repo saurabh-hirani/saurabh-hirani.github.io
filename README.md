@@ -1,4 +1,4 @@
-This is my [digital face](http://bhalothia.io). I'm a DevOps strategist and Enabler and also a Co-Founder of a DevOps specialist consulting firm: [The Remote Lab](http://theremotelab.io).
+This is my [digital face](http://bhalothia.io). I'm a DevOps strategist and Enabler and also a Co-Founder of a DevOps specialist consulting firm: [The Remote Lab](http://theremotelab.com).
 
 ====== Know more about TRL ======
 
@@ -16,7 +16,7 @@ We make sure we find the best tools, processes and people to deliver solutions t
 * Customized and collaborative approach
 * Best talent pool
 
-Say [hello](http://theremotelab.io)
+Say [hello](http://theremotelab.com)
 
 
 Credits: It's a fork out of Saurabh Hirani's [blog](http://saurabh-hirani.github.io).
