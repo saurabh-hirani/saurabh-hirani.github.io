@@ -2,10 +2,10 @@
   date: "Tuesday, April 7, 2015"
   description: |
     Introductory video for my Rootconf 2016 talk 
-  embed_url: "//www.youtube.com/embed/CjCkPrPEqWU"
+  embed_url: "//www.youtube.com/embed/akk1nsijm10"
   links:
     - label: "Video"
-      url: "https://www.youtube.com/watch?v=CjCkPrPEqWU"
+      url: "https://www.youtube.com/watch?v=akk1nsijm10"
     - label: "Summary"
       url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
 - name: "Monitoring transition - full talk"
