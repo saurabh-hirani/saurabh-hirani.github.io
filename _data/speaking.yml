@@ -2,10 +2,10 @@
   date: "Tuesday, April 7, 2015"
   description: |
     Introductory video for my Rootconf 2016 talk 
-  embed_url: "//www.youtube.com/embed/akk1nsijm10"
+  embed_url: "//www.youtube.com/embed/CjCkPrPEqWU"
   links:
     - label: "Video"
-      url: "https://www.youtube.com/watch?v=akk1nsijm10"
+      url: "https://www.youtube.com/watch?v=CjCkPrPEqWU"
     - label: "Summary"
       url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
 - name: "Monitoring transition - full talk"
@@ -17,10 +17,10 @@
     they are moved out. But no one has chronicled their journey through the process of automating a manually
     maintained monitoring system and showcased their battle scars for others to learn from. That’s what
     we are going to talk about.
-  embed_url: "//www.youtube.com/embed/CjCkPrPEqWU"
+  embed_url: "//www.youtube.com/embed/akk1nsijm10"
   links:
     - label: "Video"
-      url: "https://www.youtube.com/watch?v=CjCkPrPEqWU"
+      url: "https://www.youtube.com/watch?v=akk1nsijm10"
     - label: "Summary"
       url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
 - name: "Inframer talk - an introduction"
