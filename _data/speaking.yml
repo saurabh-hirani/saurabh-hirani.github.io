@@ -23,6 +23,10 @@
       url: "https://www.youtube.com/watch?v=akk1nsijm10"
     - label: "Summary"
       url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
+    - label: "Slides"
+      url: "http://saurabh-hirani.github.io/slides/monitoring-transition.html#/"
+    - label: "Github repo"
+      url: "https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition"
 - name: "Inframer talk - an introduction"
   date: "Tuesday, April 7, 2015"
   description: |
