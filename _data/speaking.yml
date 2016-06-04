@@ -8,6 +8,21 @@
       url: "https://www.youtube.com/watch?v=CjCkPrPEqWU"
     - label: "Summary"
       url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
+- name: "Monitoring transition - full talk"
+  date: "Thursday, April 21, 2016"
+  description: |
+    Rootconf 2016 full talk:
+    Everyone talks the benefits of having an automated monitoring system in place - one which can discover
+    infrastructure components as they are added, monitor them while they are alive and stop monitoring when
+    they are moved out. But no one has chronicled their journey through the process of automating a manually
+    maintained monitoring system and showcased their battle scars for others to learn from. That’s what
+    we are going to talk about.
+  embed_url: "//www.youtube.com/embed/CjCkPrPEqWU"
+  links:
+    - label: "Video"
+      url: "https://www.youtube.com/watch?v=CjCkPrPEqWU"
+    - label: "Summary"
+      url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
 - name: "Inframer talk - an introduction"
   date: "Tuesday, April 7, 2015"
   description: |
@@ -21,6 +36,7 @@
 - name: "Inframer - full talk"
   date: "Friday, May 15, 2015"
   description: |
+    Rootconf 2015 full talk:
     Inframer is a tool to collect, store and analyze your infrastructure data. 
   embed_url: "//www.youtube.com/embed/qB1bGUNzRb4"
   links:
