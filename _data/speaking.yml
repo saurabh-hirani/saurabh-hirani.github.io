@@ -1,7 +1,6 @@
 - name: "Monitoring transition talk - an introduction"
   date: "Tuesday, April 7, 2015"
-  description: |
-    Introductory video for my Rootconf 2016 talk 
+  description: An introduction to the full talk below
   embed_url: "//www.youtube.com/embed/CjCkPrPEqWU"
   links:
     - label: "Summary"
@@ -9,7 +8,6 @@
 - name: "Monitoring transition - full talk"
   date: "Thursday, April 21, 2016"
   description: |
-    Rootconf 2016 full talk:
     Everyone talks the benefits of having an automated monitoring system in place - one which can discover
     infrastructure components as they are added, monitor them while they are alive and stop monitoring when
     they are moved out. But no one has chronicled their journey through the process of automating a manually
@@ -25,8 +23,7 @@
       url: "https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition"
 - name: "Inframer talk - an introduction"
   date: "Tuesday, April 7, 2015"
-  description: |
-    Introductory video for my Rootconf 2015 talk
+  description: An introduction to the full talk below
   embed_url: "//www.youtube.com/embed/IXPLuzZlwhM"
   links:
     - label: "Summary"
@@ -34,7 +31,6 @@
 - name: "Inframer - full talk"
   date: "Friday, May 15, 2015"
   description: |
-    Rootconf 2015 full talk:
     Inframer is a tool to collect, store and analyze your infrastructure data. 
   embed_url: "//www.youtube.com/embed/qB1bGUNzRb4"
   links:
