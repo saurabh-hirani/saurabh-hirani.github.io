@@ -12,7 +12,7 @@ tags:
 
 *"All automated monitoring systems follow similar good practices; each manual nagios setup is manual in its own way."*
 
-Edit: Check out the [talk](https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito) and the [slides](http://saurabh-hirani.github.io/slides/monitoring-transition.html#/1)
+Edit: Check out the [talk](https://youtu.be/akk1nsijm10) and othe [slides](http://saurabh-hirani.github.io/slides/monitoring-transition.html#/1)
 
 If you have ever maintained a manual monitoring setup, you know the gist captured by the above statement. And if you have spent enough time in infrastructure, you will see that the monitoring systems of an organization are often polarized in 2 camps - clean systems built from ground up and handcrafted wizardry fed with generous additions of bandaids every other day. 
 
