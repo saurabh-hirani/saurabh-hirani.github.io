@@ -7,6 +7,8 @@ tags:
 - icinga2
 ---
 
+Edit: Check out the [talk](https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito) and the [slides](http://saurabh-hirani.github.io/slides/monitoring-transition.html#/1)
+
 *"All happy families are alike; each unhappy family is unhappy in its own way."
 - Leo Tolstoy.*
 
