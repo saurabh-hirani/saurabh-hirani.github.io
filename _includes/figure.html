@@ -9,7 +9,7 @@
   {% if include.caption %}
     <figcaption>
       {% if include.url %}
-        <a href="{{ include.url }}">{{ include.caption }}</a>
+        <a href="{{ include.url }}" target="_blank">{{ include.caption }}</a>
       {% else %}
         {{ include.caption }}
       {% endif %}

@@ -1,3 +1,4 @@
+{% capture post_title_element %}{% if include.post_title_element %}{{ include.post_title_element }}{% else %}h2{% endif %}{% endcapture %}
 <article class="mxn2 clearfix mt4 mb2 pb3 pt1{% unless include.exclude_divider %} border-bottom border-light-gray circle-line{% endunless %}">
   <!--
   <div class="col sm-col-4 px2 mb2">
