@@ -13,8 +13,6 @@ I have been playing with [icinga2](https://www.icinga.org/products/icinga-2/) an
 "last_state_ok": 1475377506.875772,
 ```
 
-Check out - icinga2 API examples [here](http://docs.icinga.org/icinga2/latest/doc/module/icinga2/chapter/icinga2-api) and [here](https://github.com/saurabh-hirani/icinga2-api-examples) and
-
 which means the last time this service was in the "OK" state was this timestamp. This one metric can give a very piercing insight into how alert response times are handled.
 
 If the last time a service was in "OK" state 3 hours ago - it means that it has not been acted upon. And that might be because the service is running in a non-prod, non-stage environment (I am looking at you QA). In a real world scenario you don't want to alert the on-call person with a pager every time QA breaks (and most of the times - it is broken deliberately to check out some scenarios) but such a long ignored alert should also surface up. This is the point at which the drilling stops because you have a hard choice to make - pager all environments or pager none. There is no middle ground.
