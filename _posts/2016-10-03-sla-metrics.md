@@ -21,16 +21,16 @@ There can be one - if instead of alerting the ops team on a specific service - a
 
 For example:
 
-1. A service in environment X was in warning/critical state for more than X minutes
+1. A service in environment X was in warning/critical state for more than N minutes
 2. SLA violated
 3. Slack the escalation points of contact
-4. If the number goes beyond a limit, raise a pager. But the saving grace of that pager would be that it would be an aggregated one (10 services in warning state for more than X minutes) and not for a single service.
+4. If the number goes beyond a limit, raise a pager. But the saving grace of that pager would be that it would be an aggregated one (10 services in warning state for more than N minutes) and not for a single service.
 
 The last point is what makes all the difference. Non critical environments should not pager on a single service failure basis - they should pager on an aggregate number.
 
-And you wouldn't mind a reminder that environment X is broken because while you were sipping coffee, your alerts/xyz email folder was being bombed, which you never check because - who checks emails for alerts?
+And you wouldn't mind a reminder that environment E is broken because while you were sipping coffee, your alerts/xyz email folder was being bombed, which you never check because - who checks emails for alerts?
 
-This data is easy to plot. Define a bunch of time slots (10-30 minutes, 30-60 minutes, 1-2 hours, etc.) and plot the number of warning/critical services in those slots every X minutes. Define response time slots for various environments and alert only when those slots are crossed. This could also be an insight for the higher management into the response times for alerts. Because no matter what you say - if an alert is not resolved on the monitoring system, the problem still exists on record.
+This data is easy to plot. Define a bunch of time slots (10-30 minutes, 30-60 minutes, 1-2 hours, etc.) and plot the number of warning/critical services in those slots every N minutes. Define response time slots for various environments and alert only when those slots are crossed. This could also be an insight for the higher management into the response times for alerts. Because no matter what you say - if an alert is not resolved on the monitoring system, the problem still exists on record.
 
 Talk is cheap. Show me the code.
 
