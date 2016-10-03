@@ -17,7 +17,7 @@ which means the last time this service was in the "OK" state was this timestamp.
 
 If the last time a service was in "OK" state 3 hours ago - it means that it has not been acted upon. And that might be because the service is running in a non-prod, non-stage environment (I am looking at you QA). In a real world scenario you don't want to alert the on-call person with a pager every time QA breaks (and most of the times - it is broken deliberately to check out some scenarios) but such a long ignored alert should also surface up. This is the point at which the drilling stops because you have a hard choice to make - pager all environments or pager none. There is no middle ground.
 
-There can be one - if instead of alerting the ops team on a specific service - alerts/reports are sent when SLAs are violated
+There can be one - if instead of alerting the ops team on a specific service - alerts/reports are sent when SLAs are violated.
 
 For example:
 
