@@ -19,10 +19,10 @@ already been written about in depth. [Gruntwork's articles](https://blog.gruntwo
 and [Reddit discussions](https://www.reddit.com/r/devops/comments/53sijz/how_do_you_structure_terraform_configurations/)
 give a fair insight into the trade offs of each approach.
 
-But One thing that is common across all approaches is that you will not have a single,
-large **main.tf** file housing all of your resources. You will have to create 
+But one thing that is common across all approaches is that you will not have a single,
+large  ```main.tf``` file housing all of your resources. You will have to create 
 a maintainable, extensible, intuitive directory structure. I follow the below 
-structure: 
+structure:
 
 {% highlight text %}
 - common
@@ -63,7 +63,7 @@ where
 This way I don't create a very granular directory structure (each component in its own directory) and also
 limit the coupling (I shouldn't worry about changing VPC when I want to mess around with the app).
 
-As the variable info is spread across 3 files when we are creating infra in **stage/app/** or **stage/base/**:
+As the variable info is spread across 3 files when we are creating infra in ```stage/app/```  or ```stage/base/```:
 
 <ol>
 <li> common.tfvars</li>
@@ -72,7 +72,7 @@ As the variable info is spread across 3 files when we are creating infra in **st
 </ol> <br/>
 we have to provide all of them while creating our Terraform plan:
 
-As you can see when we are in **stage/service1/app** we will have to run our Teraform plans like so:
+As you can see when we are in ```stage/service1/app``` we will have to run our Teraform plans like so:
 
 {% highlight text %}
 export AWS_DEFAULT_REGION=us-east-2
@@ -85,7 +85,7 @@ AWS_PROFILE=xyz terraform apply -var-file=../../common.tfvars -var-file=../stage
 against the right AWS account.
 
 If someone else wants to run the same plan, they need to understand the directory structure (which
-they should) and specify the lengthly **init, plan, apply** commands (which they shouldn't). The flexibility
+they should) and specify the lengthly ```init, plan, apply``` commands (which they shouldn't). The flexibility
 of spreading vars trades off the complexity on the command line. 
 
 This is where Makefile come to our rescue:
@@ -106,4 +106,4 @@ Terraform commands.
 
 That's it. Use Makefiles and avail the flexibility without documenting lenghty commands. 
 
-***Update***: Makefiles are useful and there are many people using it. Came across a very comprehensive [Terraform Makefile](https://github.com/pgporada/terraform-makefile/blob/master/Makefile) - check it out.
+***Update***: Makefiles are useful and there are many people using it. Came across a very comprehensive [Terraform Makefile](https://github.com/pgporada/terraform-makefile/blob/master/Makefile) - do check it out.
