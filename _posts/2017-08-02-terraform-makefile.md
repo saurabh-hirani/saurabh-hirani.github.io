@@ -6,29 +6,29 @@ tags:
 - AWS
 ---
 
-[Terraform](https://www.terraform.io/docs/modules/sources.html) is a great tool 
+[Terraform](https://www.terraform.io/docs/modules/sources.html) is a great tool
 for provisioning infrastructure. One of the best practices that evolve over
 time as you play more with Terraform, is a directory structure that works
 best for your project. Some prefer having each component in its own directory so
 that modification and destruction of resources is easy, while others treat
-a software stack (e.g. 1 ELB + 2 instances + 1 Elasticache) as a logical unit which 
-should reside together. 
+a software stack (e.g. 1 ELB + 2 instances + 1 Elasticache) as a logical unit which
+should reside together.
 
-The aim of this post is not to re-enforce that idea because that topic has 
+The aim of this post is not to re-enforce that idea because that topic has
 already been written about in depth. [Gruntwork's articles](https://blog.gruntwork.io/how-to-create-reusable-infrastructure-with-terraform-modules-25526d65f73d)
 and [Reddit discussions](https://www.reddit.com/r/devops/comments/53sijz/how_do_you_structure_terraform_configurations/)
 give a fair insight into the trade offs of each approach.
 
 But one thing that is common across all approaches is that you will not have a single,
-large  ```main.tf``` file housing all of your resources. You will have to create 
-a maintainable, extensible, intuitive directory structure. I follow the below 
+large  ```main.tf``` file housing all of your resources. You will have to create
+a maintainable, extensible, intuitive directory structure. I follow the below
 structure:
 
 {% highlight text %}
 - common
-- stage 
+- stage
   - services
-    - service1 
+    - service1
       - app
         - main.tf
         - vars.tf
@@ -86,12 +86,12 @@ against the right AWS account.
 
 If someone else wants to run the same plan, they need to understand the directory structure (which
 they should) and specify the lengthy ```init, plan, apply``` commands (which they shouldn't). The flexibility
-of spreading vars trades off the complexity on the command line. 
+of spreading vars trades off the complexity on the command line.
 
 This is where Makefile come to our rescue:
 
 Having a simple [Makefile](https://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72) in our
-target Terraform directories ensures uniformity of approach and eliminates the need to refer to 
+target Terraform directories ensures uniformity of approach and eliminates the need to refer to
 documentation on which are the right commands to run. Now our commands become:
 
 {% highlight text %}
@@ -104,6 +104,6 @@ AWS_PROFILE=xyz make apply
 This comes with the added benefit of validation i.e. [this section](https://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L3://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L33) ensures that the pre-requisite environment variables are set before running your
 Terraform commands.
 
-That's it. Use Makefiles and avail the flexibility without documenting lengthy commands. 
+That's it. Use Makefiles and avail the flexibility without documenting lengthy commands.
 
 ***Update***: Makefiles are useful and there are many people using it. Came across a very comprehensive [Terraform Makefile](https://github.com/pgporada/terraform-makefile/blob/master/Makefile) - do check it out.
