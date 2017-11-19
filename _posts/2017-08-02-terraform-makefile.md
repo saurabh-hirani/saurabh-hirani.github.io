@@ -85,7 +85,7 @@ AWS_PROFILE=xyz terraform apply -var-file=../../common.tfvars -var-file=../stage
 against the right AWS account.
 
 If someone else wants to run the same plan, they need to understand the directory structure (which
-they should) and specify the lengthly ```init, plan, apply``` commands (which they shouldn't). The flexibility
+they should) and specify the lengthy ```init, plan, apply``` commands (which they shouldn't). The flexibility
 of spreading vars trades off the complexity on the command line. 
 
 This is where Makefile come to our rescue:
@@ -104,6 +104,6 @@ AWS_PROFILE=xyz make apply
 This comes with the added benefit of validation i.e. [this section](https://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L3://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L33) ensures that the pre-requisite environment variables are set before running your
 Terraform commands.
 
-That's it. Use Makefiles and avail the flexibility without documenting lenghty commands. 
+That's it. Use Makefiles and avail the flexibility without documenting lengthy commands. 
 
 ***Update***: Makefiles are useful and there are many people using it. Came across a very comprehensive [Terraform Makefile](https://github.com/pgporada/terraform-makefile/blob/master/Makefile) - do check it out.
