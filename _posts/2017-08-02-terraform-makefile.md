@@ -101,7 +101,7 @@ AWS_PROFILE=xyz make plan
 AWS_PROFILE=xyz make apply
 {% endhighlight %}
 
-This comes with the added benefit of validation e.g. [this section](https://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L3://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L33) ensures that the pre-requisite environment variables are set before running your
+This comes with the added benefit of validation i.e. [this section](https://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L3://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L33) ensures that the pre-requisite environment variables are set before running your
 Terraform commands.
 
 That's it. Use Makefiles and avail the flexibility without documenting lenghty commands. 
