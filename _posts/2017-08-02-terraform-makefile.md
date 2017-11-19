@@ -81,8 +81,8 @@ AWS_PROFILE=xyz terraform plan -var-file=../../common.tfvars -var-file=../stage.
 AWS_PROFILE=xyz terraform apply -var-file=../../common.tfvars -var-file=../stage.tfvars terraform.tfplan
 {% endhighlight %}
 
-***Side note***: I never **export** AWS_PROFILE because I want to be sure that I am running Terraform
-against the right AWS account.
+***Side note***: I never ```export AWS_PROFILE``` because I want to be sure on every run that I am running Terraform
+commands against the right AWS account.
 
 If someone else wants to run the same plan, they need to understand the directory structure (which
 they should) and specify the lengthy ```init, plan, apply``` commands (which they shouldn't). The flexibility
