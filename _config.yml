@@ -1,6 +1,5 @@
 # Website settings
-baseurl: "/"
-url: ""
+url: "http://saurabh-hirani.github.io"
 
 # Internal nav
 nav:
