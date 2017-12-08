@@ -5,9 +5,9 @@ url: ""
 # Internal nav
 nav:
   main:
+    about: "/about"
     writing: "/writing"
     speaking: "/speaking"
-    about: "/about"
   writing:
     all: "/writing"
     popular: "/writing/popular"
