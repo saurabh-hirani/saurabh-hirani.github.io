@@ -7,8 +7,7 @@ tags:
 - icinga2
 ---
 
-*"All happy families are alike; each unhappy family is unhappy in its own way."
-- Leo Tolstoy.*
+*"All happy families are alike; each unhappy family is unhappy in its own way." - Leo Tolstoy.*
 
 *"All automated monitoring systems follow similar good practices; each manual nagios setup is manual in its own way."*
 
