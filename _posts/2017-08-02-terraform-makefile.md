@@ -24,63 +24,68 @@ large  ```main.tf``` file housing all of your resources. You will have to create
 a maintainable, extensible, intuitive directory structure. I follow the below
 structure:
 
-{% highlight text %}
-- common
-  - common.tfvars
-- stage
-  - services
-    - service1
-      - app
-        - main.tf
-        - vars.tf
-        - output.tf
-      - base
-        - main.tf
-        - vars.tf
-        - output.tf
-  - stage.tfvars
-- prod
-  - services
-    - service1
-      - app
-        - main.tf
-        - vars.tf
-        - output.tf
-      - base
-        - main.tf
-        - vars.tf
-        - output.tf
-  - base
-  - prod.tfvars
-{% endhighlight %}
+<div class='pull-left' style="border: 0px solid black;">
+{% include figure.html path="blog/terraform-makefile/terraform-sample-dir-struct.png" alt="Terraform Makefile sample dir struct" url=url_with_ref %}
+</div>
 
-where
+<style>
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:2px solid #000000;
+}
 
-<ol>
-<li> common/ - contains common vars which are environment agnostic e.g. tags for product name, product owner email, etc.</li>
-<li> base/   - contains Terraform code for base infra e.g. VPC, S3 builds bucket, IAM roles for the builds bucket, etc.</li>
-<li> app/    - contains Terraform code for creating the ELB, application instances, etc.</li>
-</ol><br/>
+th{
+    border:2px solid #000000;
+}
+
+td{
+    border:1px solid #000000;
+}
+</style>
+
+| Directory name     | Description |
+|--------------------|-------------|
+| common/            | contains common vars which are environment agnostic e.g. tags for product name, product owner email, etc.|
+| stage/base/        | contains Terraform code for stage base infra e.g. VPC, S3 builds bucket, IAM roles for the builds bucket, etc.|
+| stage/app/         | contains Terraform code for creating the stage app infra e.g. ELB, application instances, etc.|
+
+<br>
+
 This way I don't create a very granular directory structure (each component in its own directory) and also
 limit the coupling (I shouldn't worry about changing VPC when I want to mess around with the app).
 
-As the variable info is spread across 3 files when we are creating infra in ```stage/app/```  or ```stage/base/```:
+The variable info is spread across 3 files when we are creating infra in ```stage/app/```  or ```stage/base/```:
 
-<ol>
-<li> ```common/common.tfvars```  - Terraform variables common across the product e.g. product_name </li>
-<li> ```stage/stage.tfvars  ```  - Terraform variables specific to stage e.g. vpc_id </li>
-<li> ```stage/base/vars.tf  ```  - Terraform variables specific to the base component of stage e.g. builds_bucket </li>
-<li> ```stage/app/vars.tf   ```  - Terraform variables specific to the app component of stage e.g. elb_name </li>
-</ol> <br/>
-we have to provide all of them while creating our Terraform plan:
+| Variable file          | Description |
+|------------------------|-------------|
+| common/common.tfvars   | Terraform variables common across the product e.g. product_name|
+| stage/stage.tfvars     | Terraform variables specific to stage e.g. vpc_id|
+| stage/base/vars.tf     | Terraform variables specific to the base component of stage e.g. builds_bucket|
+| stage/app/vars.tf      | Terraform variables specific to the app component of stage e.g. elb_name|
+
+<br/>
+
+Hence, we have to provide all of them while creating our Terraform plan:
 
 As you can see when we are in ```stage/service1/app``` we will have to run our Teraform plans like so:
 
 {% highlight text %}
-export AWS_DEFAULT_REGION=us-east-2
-AWS_PROFILE=xyz terraform init -backend=true -backend-config="bucket=target-bucket" -backend-config="key=bucket-key.tfstate" -backend-config="region=${AWS_DEFAULT_REGION}"
-AWS_PROFILE=xyz terraform plan -var-file=../../common.tfvars -var-file=../stage.tfvars  -out=terraform.tfplan
-AWS_PROFILE=xyz terraform apply -var-file=../../common.tfvars -var-file=../stage.tfvars terraform.tfplan
+
+$ export AWS_DEFAULT_REGION=us-east-2
+
+$ AWS_PROFILE=xyz terraform init -backend=true \ 
+                                 -backend-config="bucket=target-bucket" \
+                                 -backend-config="key=bucket-key.tfstate" \
+                                 -backend-config="region=${AWS_DEFAULT_REGION}"
+
+$ AWS_PROFILE=xyz terraform plan -var-file=../../common.tfvars \
+                                 -var-file=../stage.tfvars \
+                                 -out=terraform.tfplan
+
+$ AWS_PROFILE=xyz terraform apply -var-file=../../common.tfvars \
+                                  -var-file=../stage.tfvars terraform.tfplan
+
 {% endhighlight %}
 
 ***Side note***: I never ```export AWS_PROFILE``` because I want to be sure on every run that I am running Terraform
@@ -97,10 +102,13 @@ target Terraform directories ensures uniformity of approach and eliminates the n
 documentation on which are the right commands to run. Now our commands become:
 
 {% highlight text %}
-AWS_PROFILE=xyz make help
-AWS_PROFILE=xyz make init
-AWS_PROFILE=xyz make plan
-AWS_PROFILE=xyz make apply
+$ AWS_PROFILE=xyz make help
+
+$ AWS_PROFILE=xyz make init
+
+$ AWS_PROFILE=xyz make plan
+
+$ AWS_PROFILE=xyz make apply
 {% endhighlight %}
 
 This comes with the added benefit of validation i.e. [this section](https://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L33://gist.github.com/saurabh-hirani/a94046c65f141eb2d7ee666fa2a21c72#file-terraformmakefile-L38) ensures that the pre-requisite environment variables are set before running your
