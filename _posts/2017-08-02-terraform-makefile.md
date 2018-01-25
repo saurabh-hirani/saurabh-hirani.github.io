@@ -52,9 +52,6 @@ td{
 
 <br>
 
-This way I don't create a very granular directory structure (each component in its own directory) and also
-limit the coupling (I shouldn't worry about changing VPC when I want to mess around with the app).
-
 The variable info is spread across 3 files when we are creating infra in ```stage/app/```  or ```stage/base/```:
 
 | Variable file          | Example vars |
@@ -63,6 +60,9 @@ The variable info is spread across 3 files when we are creating infra in ```stag
 | stage/stage.tfvars     | vpc_id |
 | stage/base/vars.tf     | builds_bucket, iam_role |
 | stage/app/vars.tf      | elb_name, app_instance_name |
+
+This way we don't create a very granular directory structure (each component in its own directory) and also
+limit the coupling (I shouldn't worry about changing VPC when I want to mess around with the app).
 
 <br/>
 
