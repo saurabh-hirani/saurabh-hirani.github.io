@@ -84,7 +84,8 @@ $ AWS_PROFILE=xyz terraform plan -var-file=../../common.tfvars \
                                  -out=terraform.tfplan
 
 $ AWS_PROFILE=xyz terraform apply -var-file=../../common.tfvars \
-                                  -var-file=../stage.tfvars terraform.tfplan
+                                  -var-file=../stage.tfvars \
+                                  terraform.tfplan
 
 {% endhighlight %}
 
