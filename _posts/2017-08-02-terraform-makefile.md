@@ -50,7 +50,7 @@ td{
 | stage/base/        | contains Terraform code for stage base infra |
 | stage/app/         | contains Terraform code for creating the stage app infra |
 
-<br>
+<br/>
 
 The variable info is spread across 3 files when we are creating infra in ```stage/app/```  or ```stage/base/```:
 
@@ -61,7 +61,7 @@ The variable info is spread across 3 files when we are creating infra in ```stag
 | stage/base/vars.tf     | builds_bucket, iam_role |
 | stage/app/vars.tf      | elb_name, app_instance_name |
 
-<br>
+<br/>
 
 This way we don't create a very granular directory structure (each component in its own directory) and also
 limit the coupling (I shouldn't worry about changing VPC when I want to mess around with the app).
