@@ -26,6 +26,7 @@ structure:
 
 {% highlight text %}
 - common
+  - common.tfvars
 - stage
   - services
     - service1
