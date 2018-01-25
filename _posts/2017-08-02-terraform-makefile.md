@@ -67,10 +67,10 @@ limit the coupling (I shouldn't worry about changing VPC when I want to mess aro
 As the variable info is spread across 3 files when we are creating infra in ```stage/app/```  or ```stage/base/```:
 
 <ol>
-<li> common/common.tfvars - Terraform variables common across the product e.g. product_name </li>
-<li> stage/stage.tfvars   - Terraform variables specific to stage e.g. vpc_id </li>
-<li> stage/base/vars.tf   - Terraform variables specific to the base component of stage e.g. builds_bucket </li>
-<li> stage/app/vars.tf    - Terraform variables specific to the app component of stage e.g. elb_name </li>
+<li> ```common/common.tfvars```  - Terraform variables common across the product e.g. product_name </li>
+<li> ```stage/stage.tfvars  ```  - Terraform variables specific to stage e.g. vpc_id </li>
+<li> ```stage/base/vars.tf  ```  - Terraform variables specific to the base component of stage e.g. builds_bucket </li>
+<li> ```stage/app/vars.tf   ```  - Terraform variables specific to the app component of stage e.g. elb_name </li>
 </ol> <br/>
 we have to provide all of them while creating our Terraform plan:
 
