@@ -106,9 +106,9 @@ $ pdflatex -interaction=nonstopmode -halt-on-error \
 
 This does all the hard work and gives me a PDF that just works.
 
-1. Here is [sample.slide](https://gist.github.com/saurabh-hirani/e03685b47620ef0536e3324fb34c2e61) file
-2. This is its corresponding [sample.tex](https://gist.github.com/saurabh-hirani/b21f209b53fd92e6f2516f5465983af5) file genreated using **present-tex**
-3. This is the [sample.pdf](https://github.com/saurabh-hirani/sample-uploads/blob/master/go-present-latex-post/sample.pdf) generated using **docker-pdflatex**
+1. Here is a [sample.slide](https://gist.github.com/saurabh-hirani/e03685b47620ef0536e3324fb34c2e61) file
+2. This is its corresponding [sample.tex](https://gist.github.com/saurabh-hirani/b21f209b53fd92e6f2516f5465983af5) file generated from **sample.slide** using **present-tex**
+3. This is a [sample.pdf](https://github.com/saurabh-hirani/sample-uploads/blob/master/go-present-latex-post/sample.pdf) generated from **sample.tex** using **docker-pdflatex**
 
 I made some minor styling changes to **sample.tex** (e.g. making standalone links as bullet points, image size = slide width) and created [sample-updated.tex](https://gist.github.com/saurabh-hirani/19bfb4d4f825d2423e6af2869588a105), from which I generated [sample-updated.pdf](https://github.com/saurabh-hirani/sample-uploads/blob/master/go-present-latex-post/sample-updated.pdf), which reads
 a little better.
