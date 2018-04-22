@@ -70,7 +70,7 @@ simplicity. I can relate to that because I have been there. But getting into the
 LaTeX zone takes time and I want to the least amount of time dealing with its intricacies
 and get on with my work. And more importantly, I want to make my learnings stick.
 With LaTeX - 10 minutes after my nice, shiny, slick - PDF document is created -
-I forget more than half of what I learnt about LaTeX along the way. 
+I forget more than half of what I learnt about LaTeX along the way.
 
 This is where the very awesome [Sebastien Binet](https://github.com/sbinet) came
 to my rescue. He created [present-tex](https://github.com/sbinet/present-tex) and
@@ -84,7 +84,7 @@ $ present-tex my.slide > my.tex
 $ pdflatex -shell-escape my.tex
 {% endhighlight %}
 
-The **pdflatex** tool is a part of the [MacTex](https://www.latex-project.org/get/) distribution on
+The **pdflatex** tool is a part of the [MacTex](http://www.tug.org/mactex/) distribution on
 Mac and [TexLive](http://www.tug.org/texlive/) on Linux. But is a huge package - it was around
 2.9 GBs the last time I checked on a Mac. I searched for a docker container alternative just
 in case the installation breaks and I don't want to clean up. Thankfully, another awesome
