@@ -67,11 +67,11 @@ Because, golang present exports slides to pdf, I wanted to know if there was an
 intermediate step where in I could edit them. You know, like using (<b>shudder cue</b>)
 [LaTeX](https://www.latex-project.org/). I am sure there are many who swear by its
 simplicity. I can relate to that because I have been there. But getting into the
-LaTeX zone takes time and I don't want to spend more the minimal amount of time
-exploring my presentation tool and get on with my work. And more importantly, I
-want to make my learnings stick. With LaTeX - 10 minutes after my nice, shiny,
-slick - PDF document is created - I forget more than half of what I learnt
-about LaTeX along the way. Markdown - now that's something worth remembering.
+LaTeX zone takes time and I want to the least amount of time dealing with its intricacies
+and get on with my work. And more importantly, I want to make my learnings stick.
+With LaTeX - 10 minutes after my nice, shiny, slick - PDF document is created -
+I forget more than half of what I learnt about LaTeX along the way. Markdown - now that's
+something worth remembering.
 
 This is where the very awesome [Sebastien Binet](https://github.com/sbinet) came
 to my rescue. He created [present-tex](https://github.com/sbinet/present-tex) and
