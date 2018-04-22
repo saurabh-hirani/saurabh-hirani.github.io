@@ -70,7 +70,7 @@ intermediate step where in I could edit them. You know, like using (<b>shudder c
 simplicity. I can relate to that because I have been there. But getting into the
 LaTeX zone takes time and I want to spend the least amount of time dealing with its intricacies
 and get on with my work. And more importantly, I want to make my learnings stick.
-With LaTeX - 10 minutes after my nice, shiny, slick - PDF document is created -
+With LaTeX - 10 minutes after my nice, shiny, slick PDF document is created -
 I forget more than half of what I learnt about LaTeX along the way.
 
 This is where the very awesome [Sebastien Binet](https://github.com/sbinet) came
