@@ -8,14 +8,13 @@ tags:
 [Golang present](https://godoc.org/golang.org/x/tools/present) tool is very
 handy to create quick, minimal presentations. Install the package, edit a text
 file and start serving. Text files are easier to manage than a bloated
-desktop presentation tool (looking at each one of them in particular) - I can
-check in my files, make quick changes and take notes on the fly. Best of
-all - I note down unanswered questions in the 'Q & A' section of my **.slide** file.
-I can't tell you how many times it has helped me whip up a quick and a dirty
-presentation to appease the higher management.
+desktop presentation tool (you know who you are). I can check in my files into git,
+make quick changes and take notes on the fly like noting down unanswered questions
+in the 'Q & A' section of my **.slide** file. I can't tell you how many times
+it has helped me.
 
-If you haven't played with it before, you can check out some sample presentations
-created using the present tool on the [golang talks site](https://talks.golang.org/2017).
+If you haven't played with it before, you should and before you do that, you can check out
+some sample presentations created using the present tool on the [golang talks site](https://talks.golang.org/2017).
 
 No doubt that it is a useful tool, but it some visible limitations - some of which
 are deal breakers for those who treat their presentation game seriously:
@@ -37,8 +36,8 @@ optional feature - which one should be able to turn off.
 
 If I want to list 3 bullet points on a slide, I want to show them one by one to
 the audience, so that I can explain the current point and do some build up for
-the next point. It is human nature to read everything you show on the screen
-which distracts the user from a deep, philosophical discussion around the first
+the next point. It is human nature to read everything you show on the screen.
+This distracts the audience user from a deep, philosophical discussion around the first
 question to a seemingly inconsequential thought on the third one as shown below: <br/>
 
 <div class='pull-left' style="border: 0px so  lid black;">
@@ -51,7 +50,7 @@ To rephrase the above 2 points in fancy words: <b><i>avoid cognitive overload.</
 
 After walking your engaging audience through a refreshing session on - **103 ways to
 chew your pencil** - you certainly want to share the slide deck with them. The preferred
-way to do so in the golang present world is to print and save the presentation as PDF,
+way to do so in the golang present world is to [print and save as PDF](http://grokbase.com/t/gg/golang-nuts/13969znx74/go-nuts-present-slides-to-pdf),
 which ever so often, breaks as follows:<br/>
 
 <div class='pull-left' style="border: 0px so  lid black;">
@@ -68,14 +67,15 @@ Because, golang present exports slides to pdf, I wanted to know if there was an
 intermediate step where in I could edit them. You know, like using (<b>shudder cue</b>)
 [LaTeX](https://www.latex-project.org/). I am sure there are many who swear by its
 simplicity. I can relate to that because I have been there. But getting into the
-LaTeX zone takes time and I don't want to spend more time exploring my presentation
-tool than necessary. And more importantly, I want to make my learnings stick. With
-LaTeX - 10 minutes after my nice, shiny, slick - PDF document is created - I forget more
-than half of what I learnt about LaTeX along the way.
+LaTeX zone takes time and I don't want to spend more the minimal amount of time
+exploring my presentation tool and get on with my work. And more importantly, I
+want to make my learnings stick. With LaTeX - 10 minutes after my nice, shiny,
+slick - PDF document is created - I forget more than half of what I learnt
+about LaTeX along the way. Markdown - now that's something worth remembering.
 
-But the very awesome [Sebastien Binet](https://github.com/sbinet) created
-[present-tex](https://github.com/sbinet/present-tex) and I chanced upon it through
-[this](https://www.reddit.com/r/golang/comments/3wrbng/presenttex_a_present_slide_to_latexbeamer/)
+This is where the very awesome [Sebastien Binet](https://github.com/sbinet) came
+to my rescue. He created [present-tex](https://github.com/sbinet/present-tex) and
+I chanced upon it through [this](https://www.reddit.com/r/golang/comments/3wrbng/presenttex_a_present_slide_to_latexbeamer/)
 reddit thread.
 
 All you need to do now is:
@@ -96,21 +96,28 @@ are:
 {% highlight text %}
 $ present-tex my.slide > my.tex
 
-$ pdflatex -shell-escape my.tex
-
 # attach bash to the container named pdflatex
 $ docker exec -it pdflatex bash
 $ cd shared/folder
 
 # Generate the pdf from tex file in the current directory
 $ pdflatex -interaction=nonstopmode -halt-on-error \
-$ -output-directory -shell-escape . my.tex  
+-output-directory -shell-escape . my.tex  
 {% endhighlight %}
 
-And this does all the hard work gives me a PDF that just works. It solves:
+And this does all the hard work gives me a PDF that just works.
 
-1. **The unwanted corner preview of the next slide**: - because I can display a PDF document
-   page by page.
+1. Here is [sample.slide](https://gist.github.com/saurabh-hirani/e03685b47620ef0536e3324fb34c2e61) file
+2. This is its corresponding [sample.tex](https://gist.github.com/saurabh-hirani/b21f209b53fd92e6f2516f5465983af5) file genreated using **present-tex**
+3. This is the [sample.pdf](https://github.com/saurabh-hirani/sample-uploads/blob/master/go-present-latex-post/sample.pdf) generated using **docker-pdflatex**
+
+I made some minor styling changes to **sample.tex** (e.g. making standalone links as bullet points, image size = slide width) and created [sample-updated.tex](https://gist.github.com/saurabh-hirani/19bfb4d4f825d2423e6af2869588a105), from which I generated [sample-updated.pdf](https://github.com/saurabh-hirani/sample-uploads/blob/master/go-present-latex-post/sample-updated.pdf), which reads
+a little better.
+
+Generating **.pdf** from **.tex** instead of **.slide** solves:
+
+1. **The unwanted corner preview of the next slide**: - a PDF document can be
+   zoomed in and you can choose to only display the current slide.
 
 2. **Export to PDF breaks once in a while problem** - because I am getting a full fledged
   PDF document so there isn't a need to export it.
@@ -183,11 +190,17 @@ to
 
 \end{frame}
 
-
 {% endhighlight %}
 
 which creates the following effect as I move from one slide to the next:
 
-<div class='pull-left' style="border: 0px solid black;">
 {% include figure.html path="blog/go-present-latex/progressive-disclosure.gif" alt="progressive disclosure dry violation" url=url_with_ref %}
-</div>
+
+As I type this, I can hear the distant thumping of single bladed [DRY principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) combat
+helicopters. But unless I find an easier way to do progressive disclosure in a
+PDF I will stick with what I have.
+
+That's about it. I have become comfortable with reusing [sample-updated.tex](https://gist.github.com/saurabh-hirani/19bfb4d4f825d2423e6af2869588a105) template
+  now and I directly create my presentation [sample-updated.pdf](https://github.com/saurabh-hirani/sample-uploads/blob/master/go-present-latex-post/sample-updated.pdf) from the **.tex** file, eliminating the jump from **.slide** => **.tex** => **.pdf**.
+
+Hope you found this post useful. Please leave your feedback and comments below.
