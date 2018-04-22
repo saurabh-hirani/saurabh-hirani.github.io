@@ -6,7 +6,7 @@ tags:
 ---
 
 [Golang present](https://godoc.org/golang.org/x/tools/present) tool is very
-handy to create quick, minimal presentations. Install the package, edit a text
+handy for creating quick, minimal presentations. Install the package, edit a text
 file and start serving. Text files are easier to manage than a bloated
 desktop presentation tool (you know who you are). I can check in my files into git,
 make quick changes and take notes on the fly like noting down unanswered questions
