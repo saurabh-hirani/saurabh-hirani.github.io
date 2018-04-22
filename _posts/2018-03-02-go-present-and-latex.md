@@ -197,7 +197,7 @@ which creates the following effect as I move from one slide to the next:
 
 As I type this, I can hear the distant thumping of single bladed [DRY principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) combat
 helicopters. But unless I find an easier way to do progressive disclosure in a
-PDF I will stick with what I have.
+PDF, I will stick with what I have.
 
 That's about it. I have become comfortable with reusing [sample-updated.tex](https://gist.github.com/saurabh-hirani/19bfb4d4f825d2423e6af2869588a105) template
   now and I directly create my presentation [sample-updated.pdf](https://github.com/saurabh-hirani/sample-uploads/blob/master/go-present-latex-post/sample-updated.pdf) from the **.tex** file, eliminating the jump from **.slide** => **.tex** => **.pdf**.
