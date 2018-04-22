@@ -127,8 +127,8 @@ do that in a PDF generated from **.tex** - from what I learnt, you have to go ba
 to the world of LaTeX and use use the [powerdot](https://www.sharelatex.com/learn/Powerdot)
 package. I wanted to keep my life simple, so I did the following hack:
 
-I edited the **.tex** file created by **present-tex** and I made changes to
-the slides where I wanted progressive disclosure, i.e I changed:
+I edited the **.tex** file created by **present-tex** and I made the changes similar
+to the below examples to the slides where I wanted progressive disclosure:
 
 {% highlight text %}
 \begin{frame}[fragile]
