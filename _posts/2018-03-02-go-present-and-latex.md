@@ -64,7 +64,7 @@ Some points tumble over to the next page, or worse - get stuck half way:<br/>
 {% include figure.html path="blog/go-present-latex/pdf-export-problem-2.png" alt="pdf export problem 2" url=url_with_ref %}
 </div>
 
-Because, golang present exports slides to pdf, I wanted to know if there was an
+Because golang present exports slides to pdf, I wanted to know if there was an
 intermediate step where in I could edit them. You know, like using (<b>shudder cue</b>)
 [LaTeX](https://www.latex-project.org/). I am sure there are many who swear by its
 simplicity. I can relate to that because I have been there. But getting into the
