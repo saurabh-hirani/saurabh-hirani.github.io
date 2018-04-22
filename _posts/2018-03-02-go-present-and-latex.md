@@ -104,7 +104,7 @@ $ pdflatex -interaction=nonstopmode -halt-on-error \
 -output-directory -shell-escape . my.tex  
 {% endhighlight %}
 
-And this does all the hard work gives me a PDF that just works.
+This does all the hard work and gives me a PDF that just works.
 
 1. Here is [sample.slide](https://gist.github.com/saurabh-hirani/e03685b47620ef0536e3324fb34c2e61) file
 2. This is its corresponding [sample.tex](https://gist.github.com/saurabh-hirani/b21f209b53fd92e6f2516f5465983af5) file genreated using **present-tex**
