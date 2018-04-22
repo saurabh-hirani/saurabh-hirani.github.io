@@ -15,7 +15,7 @@ it has helped me and I am thankful to its creators and contributors for making i
 so easy to use.
 
 If you haven't played with it before, you should and before you do that, you can check out
-some sample presentations created using the present tool on the [golang talks site](https://talks.golang.org/2017).
+some sample presentations created using the present tool on the [golang talks site](https://talks.golang.org/).
 
 No doubt that it is a useful tool, but it has some visible limitations - some of which
 are deal breakers for those who treat their presentation game seriously:
