@@ -44,7 +44,7 @@ question to a seemingly inconsequential thought on the third one as shown below:
 {% include figure.html path="blog/go-present-latex/progressive-disclosure-problem.png" alt="progressive disclosure problem" url=url_with_ref %}
 </div>
 
-To rephrase the above 2 points in fancy words: <b><i>avoid cognitive overload.</i></b>
+To summarise the above 2 points in fancy words: <b><i>avoid cognitive overload.</i></b>
 
 3.**Export to PDF breaks once in a while**:
 
