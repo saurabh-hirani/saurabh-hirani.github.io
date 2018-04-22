@@ -37,7 +37,7 @@ optional feature - which one should be able to turn off.
 If I want to list 3 bullet points on a slide, I want to show them one by one to
 the audience, so that I can explain the current point and do some build up for
 the next point. It is human nature to read everything you show on the screen.
-This distracts the audience user from a deep, philosophical discussion around the first
+This distracts the audience from a deep, philosophical discussion around the first
 question to a seemingly inconsequential thought on the third one as shown below: <br/>
 
 <div class='pull-left' style="border: 0px so  lid black;">
