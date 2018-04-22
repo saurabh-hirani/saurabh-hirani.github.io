@@ -68,7 +68,7 @@ Because, golang present exports slides to pdf, I wanted to know if there was an
 intermediate step where in I could edit them. You know, like using (<b>shudder cue</b>)
 [LaTeX](https://www.latex-project.org/). I am sure there are many who swear by its
 simplicity. I can relate to that because I have been there. But getting into the
-LaTeX zone takes time and I want to the least amount of time dealing with its intricacies
+LaTeX zone takes time and I want to spend the least amount of time dealing with its intricacies
 and get on with my work. And more importantly, I want to make my learnings stick.
 With LaTeX - 10 minutes after my nice, shiny, slick - PDF document is created -
 I forget more than half of what I learnt about LaTeX along the way.
