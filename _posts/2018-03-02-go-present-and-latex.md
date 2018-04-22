@@ -10,8 +10,9 @@ handy to create quick, minimal presentations. Install the package, edit a text
 file and start serving. Text files are easier to manage than a bloated
 desktop presentation tool (you know who you are). I can check in my files into git,
 make quick changes and take notes on the fly like noting down unanswered questions
-in the 'Q & A' section of my **.slide** file. I can't tell you how many times
-it has helped me.
+in the 'Q & A' section of my **.slide** file. I cannot tell you how many times
+it has helped me and I am thankful to its creators and contributors for making it
+so easy to use.
 
 If you haven't played with it before, you should and before you do that, you can check out
 some sample presentations created using the present tool on the [golang talks site](https://talks.golang.org/2017).
