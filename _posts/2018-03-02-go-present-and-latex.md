@@ -86,7 +86,7 @@ $ pdflatex -shell-escape my.tex
 
 The **pdflatex** tool is a part of the [MacTex](http://www.tug.org/mactex/) distribution on
 Mac and [TexLive](http://www.tug.org/texlive/) on Linux. But is a huge package - it was around
-2.9 GBs the last time I checked on a Mac. I searched for a docker container alternative just
+2.9 GB the last time I checked on a Mac. I searched for a docker container alternative just
 in case the installation breaks and I don't want to clean up. Thankfully, another awesome
 open source contributor - [Julian Didier](https://github.com/theredfish/docker-pdflatex) has
 hosted it [here](https://github.com/theredfish/docker-pdflatex). So the exact steps I follow
