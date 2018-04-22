@@ -122,9 +122,9 @@ Generating **.pdf** from **.tex** instead of **.slide** solves:
   PDF document so there isn't a need to export it.
 
 But one problem - **Lack of progressive disclosure support** is still there, because
-a PDF can't do progressive disclosure unless you want to go back to the world of
-LaTeX and use the [powerdot](https://www.sharelatex.com/learn/Powerdot) package.
-I wanted to keep my life simple, so I did the following hack:
+to do that, from what I saw you have to go back to the world of LaTeX and use
+use the [powerdot](https://www.sharelatex.com/learn/Powerdot) package. I wanted to
+keep my life simple, so I did the following hack:
 
 I edited the **.tex** file created by **present-tex** and I made changes to
 the slides where I wanted progressive disclosure, i.e I changed:
