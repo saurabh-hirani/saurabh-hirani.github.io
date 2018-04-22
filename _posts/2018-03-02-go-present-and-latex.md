@@ -70,8 +70,7 @@ simplicity. I can relate to that because I have been there. But getting into the
 LaTeX zone takes time and I want to the least amount of time dealing with its intricacies
 and get on with my work. And more importantly, I want to make my learnings stick.
 With LaTeX - 10 minutes after my nice, shiny, slick - PDF document is created -
-I forget more than half of what I learnt about LaTeX along the way. Markdown - now that's
-something worth remembering.
+I forget more than half of what I learnt about LaTeX along the way. 
 
 This is where the very awesome [Sebastien Binet](https://github.com/sbinet) came
 to my rescue. He created [present-tex](https://github.com/sbinet/present-tex) and
