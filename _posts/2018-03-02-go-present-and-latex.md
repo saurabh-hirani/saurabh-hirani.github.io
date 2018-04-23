@@ -122,7 +122,7 @@ can be easily solved using the [effects](https://www.sharelatex.com/learn/Beamer
 feature of Beamer. Check out this [tex.stackexchange](https://tex.stackexchange.com/questions/26987/show-a-frame-step-by-step)
 thread to know more.
 
-An example,
+An example document:
 
 {% highlight text %}
 \documentclass{beamer}
@@ -140,7 +140,8 @@ An example,
 \end{document}
 {% endhighlight %}
 
-which creates the following effect as I move from one slide to the next:
+Converting this **.tex** into **.pdf** generates a PDF which creates the following effect as I
+move from one slide to the next:
 
 {% include figure.html path="blog/go-present-latex/progressive-disclosure.gif" alt="progressive disclosure dry violation" url=url_with_ref %}
 
