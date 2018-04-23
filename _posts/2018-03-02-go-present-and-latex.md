@@ -10,12 +10,10 @@ handy for creating quick, minimal presentations. Install the package, edit a tex
 file and start serving. Text files are easier to manage than a bloated
 desktop presentation tool (you know who you are). I can check in my files into git,
 make quick changes and take notes on the fly - like noting down unanswered questions
-in the 'Q & A' section of my **.slide** file. I cannot tell you how many times
-it has helped me and I am thankful to its creators and contributors for making it
-so easy to use.
+in the **Q & A** section of my **.slide** file.
 
-If you haven't played with it before, you should and before you do that, you can check out
-some sample presentations created using the present tool on the [golang talks site](https://talks.golang.org/).
+If you haven't played with it before, you should. Here some sample presentations
+created using golang present on the [golang talks site](https://talks.golang.org/).
 
 No doubt that it is a useful tool, but it has some visible limitations - some of which
 are deal breakers for those who treat their presentation game seriously:
@@ -119,7 +117,7 @@ Generating **.pdf** from **.tex** instead of **.slide** solves:
 1. **The unwanted corner preview of the next slide**: - a PDF document can be
    zoomed in and you can choose to only display the current slide.
 
-2. **Export to PDF breaks once in a while problem** - because I am getting a full fledged
+2. **Export to PDF breaks once in a while problem**: - because I am getting a full fledged
   PDF document so there isn't a need to export it.
 
 But one problem - **Lack of progressive disclosure support** is still there. To
