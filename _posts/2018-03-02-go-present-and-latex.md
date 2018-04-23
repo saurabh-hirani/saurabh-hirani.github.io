@@ -63,13 +63,7 @@ Some points tumble over to the next page, or worse - get stuck half way:<br/>
 </div>
 
 Because golang present exports slides to pdf, I wanted to know if there was an
-intermediate step where in I could edit them. You know, like using (<b>shudder cue</b>)
-[LaTeX](https://www.latex-project.org/). I am sure there are many who swear by its
-simplicity. I can relate to that because I have been there. But getting into the
-LaTeX zone takes time and I want to spend the least amount of time dealing with its intricacies
-and get on with my work. And more importantly, I want to make my learnings stick.
-With LaTeX - 10 minutes after my nice, shiny, slick PDF document is created -
-I forget anything new I learnt about LaTeX along the way.
+intermediate step where in I could edit them using something like [LaTeX](https://www.latex-project.org/).
 
 This is where the very awesome [Sebastien Binet](https://github.com/sbinet) came
 to my rescue. He created [present-tex](https://github.com/sbinet/present-tex) and
@@ -82,6 +76,9 @@ All you need to do now is:
 $ present-tex my.slide > my.tex
 $ pdflatex -shell-escape my.tex
 {% endhighlight %}
+
+The generatex **.tex** file uses [Beamer](https://www.sharelatex.com/learn/Beamer) which is
+very useful for creating PDF presentations.
 
 The **pdflatex** tool is a part of the [MacTex](http://www.tug.org/mactex/) distribution on
 Mac and [TexLive](http://www.tug.org/texlive/) on Linux. But it is a huge package - it was around
@@ -120,85 +117,34 @@ Generating **.pdf** from **.tex** instead of **.slide** solves:
 2. **Export to PDF breaks once in a while problem**: - because I am getting a full fledged
   PDF document so there isn't a need to export it.
 
-But one problem - **Lack of progressive disclosure support** is still there. To
-do that in a PDF generated from **.tex** - from what I learnt, you have to go back
-to the world of LaTeX and use use the [powerdot](https://www.sharelatex.com/learn/Powerdot)
-package. I wanted to keep my life simple, so I did the following hack:
+But one problem - **Lack of progressive disclosure support** is still there. This
+can be easily solved using the [effects](https://www.sharelatex.com/learn/Beamer#Adding_effects_to_a_presentation)
+feature of Beamer. Check out this [tex.stackexchange](https://tex.stackexchange.com/questions/26987/show-a-frame-step-by-step)
+thread to know more.
 
-I edited the **.tex** file created by **present-tex** and I made the changes similar
-to the below examples to the slides where I wanted progressive disclosure:
-
-{% highlight text %}
-\begin{frame}[fragile]
-\frametitle{Who let the dogs out:}
-
-\begin{itemize}
-\item Who?
-\item Who?
-\item Who?
-\item Who?
-\end{itemize}
-
-\end{frame}
-{% endhighlight %}
-
-to
+An example,
 
 {% highlight text %}
-
-\begin{frame}[fragile]
-\frametitle{Who let the dogs out:}
-
-\begin{itemize}
-\item Who?
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Who let the dogs out:}
-
-\begin{itemize}
-\item Who?
-\item Who?
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Who let the dogs out:}
-
-\begin{itemize}
-\item Who?
-\item Who?
-\item Who?
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Who let the dogs out:}
-
-\begin{itemize}
-\item Who?
-\item Who?
-\item Who?
-\item Who?
-\end{itemize}
-
-\end{frame}
-
+\documentclass{beamer}
+\setbeamercovered{invisible}
+\begin{document}
+  \begin{frame}
+    \frametitle{Who let the dogs out?}
+    \begin{itemize}[<+->]
+        \item Who?
+        \item Who?
+        \item Who?
+        \item Who?
+    \end{itemize}
+  \end{frame}
+\end{document}
 {% endhighlight %}
 
 which creates the following effect as I move from one slide to the next:
 
 {% include figure.html path="blog/go-present-latex/progressive-disclosure.gif" alt="progressive disclosure dry violation" url=url_with_ref %}
 
-As I type this, I can hear the distant thumping of single bladed [DRY principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) combat
-helicopters. But unless I find an easier way to do progressive disclosure in a
-PDF, I will stick with what I have.
-
-That's about it. I have become comfortable with reusing [sample-updated.tex](https://gist.github.com/saurabh-hirani/19bfb4d4f825d2423e6af2869588a105) template
-  now and I directly create my presentation [sample-updated.pdf](https://github.com/saurabh-hirani/sample-uploads/blob/master/go-present-latex-post/sample-updated.pdf) from the **.tex** file, eliminating the jump from **.slide** => **.tex** => **.pdf**.
+That's about it. [Beamer](https://www.sharelatex.com/learn/Beamer) seems very accessible and I will
+learn more about it.
 
 Hope you found this post useful. Please leave your feedback and comments below.
