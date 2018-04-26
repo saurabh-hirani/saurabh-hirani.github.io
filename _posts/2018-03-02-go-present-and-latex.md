@@ -89,15 +89,24 @@ hosted it [here](https://github.com/theredfish/docker-pdflatex). So the exact st
 are:
 
 {% highlight text %}
+# convert .slide to .tex
+$ cd $host_slides_folder
 $ present-tex my.slide > my.tex
+
+# build the docker image
+$ cd $docker-pdflatex
+$ docker build -t pdflatex .
+
+# run the container
+$ docker run -d -it -v $host_slides_folder:/var/tmp --name pdflatex pdflatex
 
 # attach bash to the container named pdflatex
 $ docker exec -it pdflatex bash
-$ cd shared/folder
+$ cd /var/tmp/
 
 # Generate the pdf from tex file in the current directory
 $ pdflatex -interaction=nonstopmode -halt-on-error \
--output-directory -shell-escape . my.tex  
+-shell-escape -output-directory  . my.tex  
 {% endhighlight %}
 
 This does all the hard work and gives me a PDF that just works.
