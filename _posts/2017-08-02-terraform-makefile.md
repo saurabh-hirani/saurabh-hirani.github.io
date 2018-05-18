@@ -1,4 +1,4 @@
----
+
 layout: post
 title: Using Makefiles with Terraform
 tags:
@@ -74,7 +74,7 @@ As you can see when we are in ```stage/service1/app``` we will have to run our T
 
 $ export AWS_DEFAULT_REGION=us-east-2
 
-$ AWS_PROFILE=xyz terraform init -backend=true \ 
+$ AWS_PROFILE=xyz terraform init -backend=true \
                                  -backend-config="bucket=target-bucket" \
                                  -backend-config="key=bucket-key.tfstate" \
                                  -backend-config="region=${AWS_DEFAULT_REGION}"
