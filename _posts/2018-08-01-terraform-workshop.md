@@ -6,8 +6,8 @@ tags:
 ---
 
 I conducted a Terraform workshop internally for my org. I realized that most of
-the Terraform tutorials try to emphasize more on the different types of resources
-creation i.e. EC2, ELB, etc. while forgetting that the audience is one who has already
+the Terraform tutorials try to emphasize more on creating different types of resources
+ i.e. EC2, ELB, etc. while forgetting that the audience is one who has already
 created such resources from the console and is looking for a guided best practice
 approach for doing the same using Terraform.
 
