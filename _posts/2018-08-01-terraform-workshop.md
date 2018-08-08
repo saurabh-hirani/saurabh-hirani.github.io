@@ -12,7 +12,7 @@ created such resources from the console and is looking for a guided best practic
 approach for doing the same using Terraform.
 
 Hence, instead of teaching users how to create X in Terraform, I flipped the 
-approach to simulate an simple VPC setup through S3 i.e. Create S3 buckets 
+approach to simulate a simple VPC setup through S3 i.e. Create S3 buckets 
 which specify:
 
 1. 1 VPC
