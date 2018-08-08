@@ -7,7 +7,7 @@ tags:
 
 I conducted a Terraform workshop internally for my org. I realized that most of
 the Terraform tutorials try to emphasize more on the different types of resources
-i.e. EC2, ELB, etc. while forgetting that the audience is one who has already
+creation i.e. EC2, ELB, etc. while forgetting that the audience is one who has already
 created such resources from the console and is looking for a guided best practice
 approach for doing the same using Terraform.
 
@@ -29,6 +29,6 @@ to a clean, modular setup in [assignment-9](https://github.com/saurabh-hirani/te
 
 Here is the material for the same:
 
-1. Slides accompanying the workshop - [here](https://github.com/saurabh-hirani/talks/tree/master/terraform-workshop)
-2. Workshop assignments - [here](https://github.com/saurabh-hirani/terraform-workshop)
-3. Sample Terraform module created for the workshop - [here](https://github.com/saurabh-hirani/terraform-workshop-module)
+1. [Slides accompanying the workshop](https://github.com/saurabh-hirani/talks/tree/master/terraform-workshop)
+2. [Workshop assignments](https://github.com/saurabh-hirani/terraform-workshop)
+3. [Sample Terraform module created for the workshop](https://github.com/saurabh-hirani/terraform-workshop-module)
