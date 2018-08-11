@@ -41,4 +41,4 @@ This is a gif of the v2 watchface that I created:
 
 Lesson learnt: 
 
-- I never thought I would do image editing to simple design work. But we learn everything we need to when we want to scratch our own itch.
+- I never thought I would do need to do image editing or simple design work. But we learn everything we need to when we want to scratch our own itch.
