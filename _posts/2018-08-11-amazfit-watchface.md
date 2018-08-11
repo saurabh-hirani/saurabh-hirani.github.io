@@ -17,7 +17,7 @@ But there were some glaring limitations in it that I wanted to fix:
 1. It has a seconds display - which is a drain on the battery because the display refreshes every second.
 2. There is no way of knowing how much battery is left - the current indication might be for 15, 20, 30%.
 3. There are no icons for - bluetooth, alarm, dnd or watch lock status.
-4. There was no way to flip between 12h/24h display.
+4. There is no 24h display variant of this watchface.
 
 I browsed several watch faces on the [Amazfit watch faces site](https://amazfitwatchfaces.com/bip/) in the
 hope that someone might have noticed the same things as I did, and hopefully fixed them. But I couldn't find
