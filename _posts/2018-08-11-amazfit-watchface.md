@@ -22,11 +22,8 @@ I browsed several watch faces on the [Amazfit watch faces site](https://amazfitw
 hope that someone might have noticed the same things as I did, and hopefully fixed them. But I couldn't find
 any fixes for the above.
 
-I ranted about the same on [reddit](https://www.reddit.com/r/amazfit/comments/965b3v/is_anyone_using_a_casio_style_progress_meter_with/)
-and a user was kind enough to give me a basic fix which displayed battery amount, bluetooth and alarm status. But it still showed 
-seconds and the battery amount font was still small.
-
-I poked around a bit and got the instructions to modify watchfaces on [this thread](https://www.reddit.com/r/amazfit/comments/83q6wl/watchface_coding/).
+I ranted about the same on [reddit](https://www.reddit.com/r/amazfit/comments/965b3v/is_anyone_using_a_casio_style_progress_meter_with/),
+got some initial help, poked around a bit and found the instructions to modify watchfaces on [this thread](https://www.reddit.com/r/amazfit/comments/83q6wl/watchface_coding/).
 It just required some basic image editing and json config changes.
 
 Did that and I released 2 versions of my work:
@@ -42,4 +39,4 @@ This is a gif of the v2 watchface that I created:
 
 Lesson learnt: 
 
-- I never thought I would do need to do image editing or simple design work. But we learn everything we need to when we want to scratch our own itch.
+- I never thought I would do need to do image editing or simple design cleanup. But we learn everything we need to when we want to scratch our own itch.
