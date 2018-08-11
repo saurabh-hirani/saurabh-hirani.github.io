@@ -6,8 +6,9 @@ tags:
 ---
 
 [Amazfit Bip](https://www.techradar.com/sg/reviews/amazfit-bip) is a simple, no-nonsense
-smartwatch. For a user with basic needs like me - (a clean digital face with step counter),
-it serves the purpose really well. I liked one of the following stock digital watch faces:
+smartwatch. For a user with basic needs it serves the purpose really well. 
+
+I liked one of the following stock digital watch faces that it provides:
 
 {% include figure.html path="blog/amazfit-watchface/amazfit-default-watchface.png" alt="Amazfit default watchface" url=url_with_ref %}
 
