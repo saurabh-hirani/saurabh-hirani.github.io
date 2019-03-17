@@ -51,3 +51,4 @@ gems:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-paginate
+  - jekyll-gist
