@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The curios case of grequests and https
+title: The curios case of grequests and https - Part 1
 tags:
 - python
 ---
@@ -12,7 +12,6 @@ module.
 pre {
 	width: 1000px;                          /* specify width  */
 }
-
 </style>
 
 ### Introduction
@@ -24,7 +23,7 @@ download them one by one.
 {% gist 6c904e3e6866c9c26e5f51d4883803dc %}
 
 An obvious solution in the Python world is to use the [grequests](https://github.com/kennethreitz/grequests)
-module, wherein one would write code similar to the following:
+module, wherein one would write code similar to the following to get speed gains:
 
 {% gist b08b8b3eb98432d786e4d6e712c0d4c9 %}
 
@@ -32,7 +31,7 @@ module, wherein one would write code similar to the following:
 
 where
 
-**gevent = greenlet + libev**
+**gevent = [greenlet](https://greenlet.readthedocs.io/en/latest/) + [libev](http://software.schmorp.de/pkg/libev.html)**
 
 I won't even try to explain what gevent does in detail because the amazing 
 Kavya Joshi has explained it in depth in [this](https://www.youtube.com/watch?v=GunMToxbE0E) 
@@ -40,11 +39,11 @@ awesome talk.
 
 [This](http://blog.hownowstephen.com/post/50743415449/gevent-tutorial) equally excellent post walks
 through examples to explain how you can use gevent and explains the importance of [monkey-patching](https://en.wikipedia.org/wiki/Monkey_patch)
-in gevent.
+in gevent. Here's a good [intro](http://blog.pythonisito.com/2012/08/gevent-monkey-patch.html) to gevent's monkey patching.
 
 But at a very high level something like this happens:
 
-Life before gevent:
+When you do requests.get:
 
 1. Client opens a connection to the server
 2. The client sends the request.
@@ -52,7 +51,7 @@ Life before gevent:
 4. Server responds.
 5. Client goes back to Point 1. for next URL.
 
-With gevent the flow becomes:
+When you use grequests:
 
 1. Client opens a connection to the server
 2. The client sends the request.
@@ -60,15 +59,21 @@ With gevent the flow becomes:
    by registering a callback which is fired when the server responds.
 4. Client does Point 1-3 for rest of the URLs.
 
-So everthing is sorted, right? If it was then I wouldn't be writing this post.
+How does grequest accomplish this:
 
-What if I told you your program **might** do serial URL calls under the hood even if you use
-**grequests**? You would say - talk is cheap. Show me the code.
+1. grequests [imports gevent](https://github.com/kennethreitz/grequests/blob/98ff519f39d7456457a8b6e083766dd6d6f66e0b/grequests.py#L14)
+   and uses gevent to [monkey patch](https://github.com/kennethreitz/grequests/blob/98ff519f39d7456457a8b6e083766dd6d6f66e0b/grequests.py#L21) the
+   standard lib.
+2. Now the underlying ```recv``` call is made non-blocking by gevent's library.
+
+This works generally but I ran into an issue which prevented gevent from taking over even after 
+using grequests.
+
+### The Setup
 
 Clone [this repo](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests) which 
-has the sample setup. Follow these steps to get the test environment up and running:
-
-1. ```docker-compose --project-name test_grequests up```
+has the sample setup. Run this [docker-compose command](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages#pre-requisites) to 
+get the test environment up and running:
 
 This will create the following containers on your system:
 
@@ -76,273 +81,191 @@ This will create the following containers on your system:
    which mimics the very useful [httpbin.org](https://httpbin.org/), which provides
    the [/delay](https://httpbin.org/#/Dynamic_data/get_delay__delay_) endpoint to introduce
    latency in response.
-2. **python27_n** where n = 1 to 4 - Python 2.7 containers with different pip modules
+2. **python27_n** where n = 1 to 4 - Python2.7 containers with different pip modules
    installed which show the situations in which the code is fast or slow.
-3. **python37_n** where n = 1 to 4 - Same as above but for Python 3.7
+3. **python37_n** where n = 1 to 4 - Same as above but for Python3.7 
 
-We will go through the following stages and see ```grequests``` behaviour:
+We will go through these [stages](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages#stages) and see ```grequests``` behaviour.
 
-<a name="all-stages">
+Each stage is going to differ from the previous in the list of modules installed on the docker container. The code that we 
+run in these stages is going to stay the same.
 
-1. [Stage-1 Python 2.7](#stage-1-python27): runs fast.
-2. [Stage-1 Python 3.7](#stage-1-python37): runs fast.
-3. [Stage-2 Python 2.7](#stage-2-python27): runs slow.
-4. [Stage-2 Python 3.7](#stage-2-python37): runs slow.
-5. [Stage-3 Python 2.7](#stage-3-python27): runs fast.
-6. [Stage-3 Python 3.7](#stage-3-python37): runs slow.
-7. [Stage-4 Python 2.7](#stage-4-python27): runs fast. 
-8. [Stage-4 Python 3.7](#stage-4-python37): runs fast or slow depending on a patch applied to a Python library.
+<a name="stage-0-main"></a>
 
-Each stage is going to differ from the previous in the list of modules installed on the docker container. The
-code that we run against these Python environments is going to stay the same.
+### Stage-0
+
+- Repo path: [here](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/00)
+
+- Verdict: Python2.7 **may** run slow and Python3.7 **may** run fast.
+
+- Experiment output - [here.](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/00)
+
+- Modules installed: Not applicable as we are not using virtualenv.
+
+- Reasoning: 
+  As per the [disclaimer](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/00#disclaimer),
+because this stage doesn't use virtualenv, the run time will depend on the Python modules you have installed on your system. 
+We will uncover this behaviour in more depth in the coming stages.
+
+<a name="stage-0-main"></a>
+
+### Stage-1
+
+- Repo path: [here](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01)
+
+- Verdict: [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27) runs fast and [ Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python37) runs fast.
+
+- Experiment output - [here.](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01)
+
+- Modules installed (same for both):
+  - [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27#check-installed-modules)
+  - [Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python37#check-installed-modules)
 
 <a name="stage-1-main"></a>
 
-### Stage-1 - Python 2.7 and Python 3.7 run fast
+### Stage-2
 
-<a name="stage-1-python27"></a>
+- Repo path: [here](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02)
 
-#### Stage-1 - Python 2.7 - runs fast
+- Verdict: [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27) runs **slow** and [ Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python37) runs **slow**.
 
-[Back to all stages](#all-stages)
+- Experiment output - [here.](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02)
 
-Run the following command and watch what happens:
+- Modules installed (same for both):
+  - [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python27#check-installed-modules)
+  - [Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python37#check-installed-modules)
 
-{% highlight text %}
-# ./docker-exec.sh test_grequests_python27_1 \
-  '/usr/local/bin/python /app/test_grequests_v2.py \
-  --url https://https_server:8081/delay/1 --url-count 10'
-{% endhighlight %}
+### Why is Stage-2 slow and Stage-1 fast with the same code?
 
-```./docker-exec.sh``` matches the container(s) specified in the first argument
-and runs the command specified in the second argument on those container(s).
+- We will show the reasoning for Python2.7 as it applies to Python3.7 also.
+- The difference between [stage-2](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02) and [stage-1](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01)
+  is that Stage-2 has the [pyopenssl](https://pypi.org/project/pyOpenSSL/) module installed. (compare the **Modules Installed** in above stages)
+- Using pyopenssl does **something** which leads to the underlying socket class to change e.g. [Stage-1 Python2.7 socket class](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27#get-socket-class) 
+  v/s [Stage-2 Python2.7 socket class](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python27#get-socket-class)
+- Stage-1 Python2.7 socket class = **gevent._sslgte279.SSLSocket** and Stage-2 Python2.7 socket class = **urllib3.contrib.pyopenssl.WrappedSocket**.
+-  **grequests** internally uses [requests](https://github.com/kennethreitz/requests) which uses [urllib3](https://github.com/urllib3/urllib3)
+- requests module, during initialization tries to include pyopenssl optionally as per [here.](https://github.com/kennethreitz/requests/blob/c4d76800e8917c3fda10cb1f2dee22c8219de3e6/requests/__init__.py#L95)
+- If the user has **pyopenssl** installed, do ```pyopenssl.inject_into_urrllib3```. If the user doesn't have it installed, [this](https://github.com/urllib3/urllib3/blob/1e9ab5aee042ff0158d0f443bc600ef3a2e7bf9a/src/urllib3/contrib/pyopenssl.py#L46) call fails which is 
+  caught by ```ImportError``` which does ```pass```, which made the Stage-1 ```ImportError``` silent.
+- Using pyopenssl was introduced in [this](https://github.com/kennethreitz/requests/pull/1347/commits/18857a0eedcebbfc40bb1ae431daed935cd51d56) commit to take advantage of urllib3's [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) support.
+- The side effect of using **pyopenssl** is that it **re-patches** the already monkey-patched [SSLContext](https://github.com/urllib3/urllib3/blob/1e9ab5aee042ff0158d0f443bc600ef3a2e7bf9a/src/urllib3/contrib/pyopenssl.py#L121) which denies us
+  any gevent magic. [SSLContext](https://docs.python.org/3/library/ssl.html#ssl.SSLContext.wrap_socket) is used to add SSL capabilities
+  to a socket.
+- Let us see how this **re-patching** happened and why it led to slower code in the next 2 sections.
 
-The above command gives an output similar to the following:
+### Monkey patching and re-patching.
 
-{% highlight text %}
-================================
---------------------------------
-urllib3==1.24.1
-requests==2.21.0
-gevent==1.4.0
-grequests==0.3.0
---------------------------------
-+ docker exec -it test_grequests_python27_1 /usr/local/bin/python /app/test_grequests_v2.py --url https://https_server:8081/delay/1 --url-count 10
-2019-03-17 15:30:54,977 - python27_1 - START
-2019-03-17 15:30:56,015 - python27_1 - len(all_page_ids) = 10
-2019-03-17 15:30:56,016 - python27_1 - len(valid_page_ids) = 10
-2019-03-17 15:30:56,016 - python27_1 - len(invalid_page_ids) = 0
-2019-03-17 15:30:56,019 - python27_1 - total_time=0:00:01.048203
-2019-03-17 15:30:56,020 - python27_1 - END
-+ set +x
-================================
-{% endhighlight %}
+This concept is best explained by leveraging our already existing Stage-1 and Stage-2 Python interpreter console. Keep in mind that
+Stage-2 had **pyopenssl** installed, while Stage-1 didn't. We will show the the following code for Python2.7 as the same
+output applies to Python3.7 also.
 
-It prints the [modules installed for that container](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/blob/master/stages/01/python27/requirements.txt) followed by the command output. 
-It clearly shows that concurrent requests are being made and a GET on 
-10 URLs is getting completed in around 1 second.
+<ul>
+  <li> Stage-1 Python2.7: </li>
+  <ol>
 
-<a name="stage-1-python37"></a>
+  <li> Get the interpreter console: </li>
 
-#### Stage-1 - Python 3.7 - runs fast
+    {% highlight text %}
+    ./docker-exec.sh test_grequests_python27_1 /usr/local/bin/python
+    {% endhighlight %}
 
-[Back to all stages](#all-stages)
+  <li> Import urllib3 and print the SSLContext: </li>
 
-{% highlight text %}
-# ./docker-exec.sh test_grequests_python37_1 \
-  '/usr/local/bin/python /app/test_grequests_v2.py \
-  --url https://https_server:8081/delay/1 --url-count 10'
-{% endhighlight %}
+    {% highlight text %}
+    >>> from __future__ import print_function
+    >>> import urllib3
+    >>> print(urllib3.util.ssl_.SSLContext)
+    <class 'ssl.SSLContext'>
+    {% endhighlight %}
 
-The above command gives an output similar to the following:
+  <li> Close and re-open the interpreter console and import urllib3 after monkey patching and then print the SSLContext:</li>
 
-{% highlight text %}
-================================
---------------------------------
-urllib3==1.24.1
-requests==2.21.0
-gevent==1.4.0
-grequests==0.3.0
---------------------------------
-+ docker exec -it test_grequests_python37_1 /usr/local/bin/python /app/test_grequests_v2.py --url https://https_server:8081/delay/1 --url-count 10
-2019-03-17 15:33:34,920 - python37_1 - START
-2019-03-17 15:33:35,973 - python37_1 - len(all_page_ids) = 10
-2019-03-17 15:33:35,973 - python37_1 - len(valid_page_ids) = 10
-2019-03-17 15:33:35,973 - python37_1 - len(invalid_page_ids) = 0
-2019-03-17 15:33:35,975 - python37_1 - total_time=0:00:01.060971
-2019-03-17 15:33:35,976 - python37_1 - END
-+ set +x
-================================
-{% endhighlight %}
+    {% highlight text %}
+    >>> from __future__ import print_function
+    >>> import gevent
+    >>> from gevent import monkey
+    >>> monkey.patch_all()
+    True
+    >>> import urllib3
+    >>> print(urllib3.util.ssl_.SSLContext)
+    <class 'gevent._sslgte279.SSLContext'>
+    {% endhighlight %}
 
-No surprises here. Similar run time.
+  <li> Close and re-open the interpreter console and import urllib3 after importing grequests then print the SSLContext:</li>
 
-<a name="stage-2-main"></a>
+    {% highlight text %}
+    >>> from __future__ import print_function
+    >>> import grequests
+    >>> import urllib3
+    >>> print(urllib3.util.ssl_.SSLContext)
+    <class 'gevent._sslgte279.SSLContext'>
+    {% endhighlight %}
 
-### Stage-2 - Python 2.7 and Python 3.7 run slow
+  </ol>
+  Please note that in the last 2 cases, the SSLContext is provided by <b>gevent</b>.
 
-<a name="stage-2-python27"></a>
+  <li> Stage-2 Python2.7: </li>
 
-#### Stage-2 - Python 2.7 - runs slow
+  <ol>
 
-[Back to all stages](#all-stages)
+  <li> Get the interpreter console: </li>
 
-{% highlight text %}
-# ./docker-exec.sh test_grequests_python27_2 \
-  '/usr/local/bin/python /app/test_grequests_v2.py \
-  --url https://https_server:8081/delay/1 --url-count 10'
-{% endhighlight %}
+    {% highlight text %}
+    ./docker-exec.sh test_grequests_python27_1 /usr/local/bin/python
+    {% endhighlight %}
 
+  <li> Import urllib3 and print the SSLContext: </li>
 
-{% highlight text %}
-================================
---------------------------------
-urllib3==1.24.1
-requests==2.21.0
-gevent==1.4.0
-grequests==0.3.0
-pyopenssl==19.0.0
---------------------------------
-+ docker exec -it test_grequests_python27_2 /usr/local/bin/python /app/test_grequests_v2.py --url https://https_server:8081/delay/1 --url-count 10
-2019-03-17 15:35:36,704 - python27_2 - START
-2019-03-17 15:35:46,805 - python27_2 - len(all_page_ids) = 10
-2019-03-17 15:35:46,806 - python27_2 - len(valid_page_ids) = 10
-2019-03-17 15:35:46,806 - python27_2 - len(invalid_page_ids) = 0
-2019-03-17 15:35:46,807 - python27_2 - total_time=0:00:10.107268
-2019-03-17 15:35:46,808 - python27_2 - END
-+ set +x
-================================
-{% endhighlight %}
+    {% highlight text %}
+    >>> from __future__ import print_function
+    >>> import urllib3
+    >>> print(urllib3.util.ssl_.SSLContext)
+    <class 'ssl.SSLContext'>
+    {% endhighlight %}
 
-There are 2 major differences from [Stage-1 Python 2.7](#stage-1-python27):
+  <li> Close and re-open the interpreter console and import urllib3 after monkey patching and then print the SSLContext:</li>
 
-1. We installed the ```pyopenssl``` module.
-2. The same code's run time spiked from around 1 sec to 10 seconds i.e. around 1 second for each URL.
+    {% highlight text %}
+    >>> from __future__ import print_function
+    >>> import gevent
+    >>> from gevent import monkey
+    >>> monkey.patch_all()
+    True
+    >>> import urllib3
+    >>> print(urllib3.util.ssl_.SSLContext)
+    <class 'gevent._sslgte279.SSLContext'>
+    {% endhighlight %}
 
-**What happened?**
+  <li> Close and re-open the interpreter console and import urllib3 after importing grequests then print the SSLContext:</li>
 
-Let's enable some more debugging by adding the flag ```--log-level DEBUG``` which 
-prints the ```requests``` module connection calls also. 
+    {% highlight text %}
+    >>> from __future__ import print_function
+    >>> import grequests
+    >>> import urllib3
+    >>> print(urllib3.util.ssl_.SSLContext)
+    <class 'urllib3.contrib.pyopenssl.PyOpenSSLContext'>
 
-{% highlight text %}
-# ./docker-exec.sh test_grequests_python27_2 \
-  '/usr/local/bin/python /app/test_grequests_v2.py \
-  --url https://https_server:8081/delay/1 --url-count 10 --log-level DEBUG'
-{% endhighlight %}
+    {% endhighlight %}
 
-{% highlight text %}
-================================
---------------------------------
-urllib3==1.24.1
-requests==2.21.0
-gevent==1.4.0
-grequests==0.3.0
-pyopenssl==19.0.0
---------------------------------
-+ docker exec -it test_grequests_python27_2 /usr/local/bin/python /app/test_grequests_v2.py --url https://https_server:8081/delay/1 --url-count 10 --log-level DEBUG
-2019-03-18 12:17:31,782 - python27_2 - START
-2019-03-18 12:17:31,790 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:31,798 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:31,800 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:31,802 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:31,803 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:31,805 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:31,808 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:31,811 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:31,813 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:31,814 - python27_2 - Starting new HTTPS connection (1): https_server:8081
-2019-03-18 12:17:32,830 - python27_2 - https://https_server:8081 "GET /delay/1?page=6 HTTP/1.1" 200 308
-2019-03-18 12:17:33,841 - python27_2 - https://https_server:8081 "GET /delay/1?page=5 HTTP/1.1" 200 308
-2019-03-18 12:17:34,849 - python27_2 - https://https_server:8081 "GET /delay/1?page=4 HTTP/1.1" 200 308
-2019-03-18 12:17:35,856 - python27_2 - https://https_server:8081 "GET /delay/1?page=3 HTTP/1.1" 200 308
-2019-03-18 12:17:36,866 - python27_2 - https://https_server:8081 "GET /delay/1?page=2 HTTP/1.1" 200 308
-2019-03-18 12:17:37,876 - python27_2 - https://https_server:8081 "GET /delay/1?page=1 HTTP/1.1" 200 308
-2019-03-18 12:17:38,885 - python27_2 - https://https_server:8081 "GET /delay/1?page=0 HTTP/1.1" 200 308
-2019-03-18 12:17:39,898 - python27_2 - https://https_server:8081 "GET /delay/1?page=9 HTTP/1.1" 200 308
-2019-03-18 12:17:40,911 - python27_2 - https://https_server:8081 "GET /delay/1?page=7 HTTP/1.1" 200 308
-2019-03-18 12:17:41,919 - python27_2 - https://https_server:8081 "GET /delay/1?page=8 HTTP/1.1" 200 308
-2019-03-18 12:17:41,921 - python27_2 - len(all_page_ids) = 10
-2019-03-18 12:17:41,921 - python27_2 - len(valid_page_ids) = 10
-2019-03-18 12:17:41,921 - python27_2 - len(invalid_page_ids) = 0
-2019-03-18 12:17:41,922 - python27_2 - total_time=0:00:10.144756
-2019-03-18 12:17:41,922 - python27_2 - END
-+ set +x
-================================
-{% endhighlight %}
+  </ol>
 
-This shows that each url was being called after the previous one finished. Let's get some more detail
-by profiling the code and seeing what is taking time by using the flags ```--profile-code``` and 
-```--profile-stats-count 20``` to show the top 20 time consuming calls.
+  Please note that in the last case, the SSLContext is no longer provided by gevent because the presence 
+  of <b>pyopenssl</b> triggered the repatching. This does not happen in Stage-1 - now let us see how this 
+  impacts the run time.
+</ul>
+
+### Profiling Stage-1 and Stage-2 code.
+
+1. [Stage-1 Python2.7 profiling output](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27#profile-code)
+1. [Stage-2 Python2.7 profiling output](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python27#profile-code)
+
+If you observe the output for Stage-2 you will see that there is a call to **wait**:
 
 {% highlight text %}
-# ./docker-exec.sh test_grequests_python27_2 \
-  '/usr/local/bin/python /app/test_grequests_v2.py \
-  --url https://https_server:8081/delay/1 --url-count 10 \
-  --profile-code --profile-stats-count 20'
+30    0.001    0.000   10.042    0.335 /usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:99(do_poll)
 {% endhighlight %}
 
-{% highlight text %}
-===============================                                                                                                                                                                                                    [5/5914]
---------------------------------
-urllib3==1.24.1
-requests==2.21.0
-gevent==1.4.0
-grequests==0.3.0
-pyopenssl==19.0.0
---------------------------------
-+ docker exec -it test_grequests_python27_2 /usr/local/bin/python /app/test_grequests_v2.py --url https://https_server:8081/delay/1 --url-count 10 --profile-code --profile-stats-count 20
-2019-03-18 12:19:37,223 - python27_2 - START
-2019-03-18 12:19:47,699 - python27_2 - len(all_page_ids) = 10
-2019-03-18 12:19:47,699 - python27_2 - len(valid_page_ids) = 10
-2019-03-18 12:19:47,699 - python27_2 - len(invalid_page_ids) = 0
-         23563 function calls (23266 primitive calls) in 10.472 seconds
-
-   Ordered by: cumulative time
-   List reduced from 535 to 20 due to restriction <20>
-
-   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    0.000    0.000   10.473   10.473 /usr/local/lib/python2.7/site-packages/grequests.py:103(map)
-     10/1    0.000    0.000   10.472   10.472 /usr/local/lib/python2.7/site-packages/grequests.py:60(send)
-     10/1    0.000    0.000   10.472   10.472 /usr/local/lib/python2.7/site-packages/requests/sessions.py:466(request)
-     10/1    0.001    0.000   10.447   10.447 /usr/local/lib/python2.7/site-packages/requests/sessions.py:617(send)
-     10/1    0.001    0.000   10.445   10.445 /usr/local/lib/python2.7/site-packages/requests/adapters.py:394(send)
-     10/1    0.001    0.000   10.436   10.436 /usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:446(urlopen)
-     10/1    0.002    0.000   10.433   10.433 /usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:319(_make_request)
-       10    0.000    0.000   10.034    1.003 /usr/local/lib/python2.7/httplib.py:1084(getresponse)
-       10    0.001    0.000   10.033    1.003 /usr/local/lib/python2.7/httplib.py:431(begin)
-       26    0.001    0.000   10.008    0.385 /usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:139(wait_for_read)
-       26    0.001    0.000   10.007    0.385 /usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:87(poll_wait_for_socket)
-       70    0.008    0.000   10.005    0.143 /usr/local/lib/python2.7/socket.py:410(readline)
-       27    0.001    0.000   10.003    0.370 /usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:45(_retry_on_intr)
-       26    0.001    0.000   10.002    0.385 /usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:99(do_poll)
-       27   10.001    0.370   10.001    0.370 {built-in method poll}
-       10    0.001    0.000    9.994    0.999 /usr/local/lib/python2.7/httplib.py:392(_read_status)
-    20/10    0.002    0.000    9.991    0.999 /usr/local/lib/python2.7/site-packages/urllib3/contrib/pyopenssl.py:271(recv)
-     10/1    0.001    0.000    9.426    9.426 /usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:831(_validate_conn)
-     10/1    0.002    0.000    9.426    9.426 /usr/local/lib/python2.7/site-packages/urllib3/connection.py:299(connect)
-     10/1    0.000    0.000    9.415    9.415 /usr/local/lib/python2.7/site-packages/urllib3/connection.py:145(_new_conn)
-2019-03-18 12:19:47,712 - python27_2 - total_time=0:00:10.495121
-2019-03-18 12:19:47,713 - python27_2 - END
-+ set +x
-{% endhighlight %}
-
-There following entries stand out:
-
-{% highlight text %}
-... 10.008    0.385 /usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:139(wait_for_read)
-... 10.007    0.385 /usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:87(poll_wait_for_socket)
-... 10.002    0.385 /usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:99(do_poll)
-... 9.991    0.999 /usr/local/lib/python2.7/site-packages/urllib3/contrib/pyopenssl.py:271(recv)
-{% endhighlight %}
-
-The socket when it is blocked on ```recv``` is stuck on ```wait_for_read``` and is doing a
-```do_poll``` to wait it out.
-
-If we look at the source of 
-{% highlight text %}
-/usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:99(do_poll)
-{% endhighlight %}
-
+The source of ```/usr/local/lib/python2.7/site-packages/urllib3/util/wait.py:99(do_poll)```:
 
 {% highlight text %}
 def do_poll(t):
@@ -353,90 +276,85 @@ def do_poll(t):
 return bool(_retry_on_intr(do_poll, timeout))
 {% endhighlight %}
 
-We see that there is an explicit wait of 1 second (1000 ms) happening on when the
-socket is blocked. One more interesting observation is that the ```recv``` socket call is made
-from ```pyopenssl.py```
+We see that there is an explicit wait of 1 second (1000 ms) happening on when the socket is blocked. One more interesting observation is 
+that for Stage-2 the **recv** socket call is made from **pyopenssl.py.** which leads to polled waiting:
 
 {% highlight text %}
-... 9.991    0.999 /usr/local/lib/python2.7/site-packages/urllib3/contrib/pyopenssl.py:271(recv)
+20/10    0.002    0.000   10.030    1.003 /usr/local/lib/python2.7/site-packages/urllib3/contrib/pyopenssl.py:271(recv)
 {% endhighlight %}
 
-We have proof that code in [Stage-2 Python 2.7](#stage-2-python27) runs slow. But why did 
-the previous case run fast and what does the presence of ```pyopenssl``` have to do with it?
-
-To understand this, let us profile [Stage-1 Python 2.7](#stage-1-python27):
+ For Stage-1 the **recv** socket call is made from **gevent** which doesn't get blocked on IO and moves on to processing the
+ next request:
 
 {% highlight text %}
-# ./docker-exec.sh test_grequests_python27_1 \
-  '/usr/local/bin/python /app/test_grequests_v2.py \
-  --url https://https_server:8081/delay/1 --url-count 10 \
-  --profile-code --profile-stats-count 20'
+10/1    0.001    0.000    1.294    1.294 /usr/local/lib/python2.7/site-packages/gevent/_sslgte279.py:448(recv)
 {% endhighlight %}
 
+Hence there is no polled wait.
+
+### Should I just uninstall pyopenssl and be fast again?
+
+You can do that and get the speed gains. But as per [this](https://pyopenssl.org/en/stable/introduction.html#history):
 
 {% highlight text %}
-================================
---------------------------------
-urllib3==1.24.1
-requests==2.21.0
-gevent==1.4.0
-grequests==0.3.0
---------------------------------
-+ docker exec -it test_grequests_python27_1 /usr/local/bin/python /app/test_grequests_v2.py --url https://https_server:8081/delay/1 --url-count 10 --profile-code --profile-stats-count 20
-2019-03-18 12:35:48,228 - python27_1 - START
-2019-03-18 12:35:49,595 - python27_1 - len(all_page_ids) = 10
-2019-03-18 12:35:49,596 - python27_1 - len(valid_page_ids) = 10
-2019-03-18 12:35:49,596 - python27_1 - len(invalid_page_ids) = 0
-         19256 function calls (18825 primitive calls) in 1.364 seconds
-
-   Ordered by: cumulative time
-   List reduced from 474 to 20 due to restriction <20>
-
-   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    0.000    0.000    1.364    1.364 /usr/local/lib/python2.7/site-packages/grequests.py:103(map)
-     10/1    0.000    0.000    1.364    1.364 /usr/local/lib/python2.7/site-packages/grequests.py:60(send)
-     10/1    0.000    0.000    1.364    1.364 /usr/local/lib/python2.7/site-packages/requests/sessions.py:466(request)
-     10/1    0.001    0.000    1.335    1.335 /usr/local/lib/python2.7/site-packages/requests/sessions.py:617(send)
-     10/1    0.001    0.000    1.333    1.333 /usr/local/lib/python2.7/site-packages/requests/adapters.py:394(send)
-     10/1    0.001    0.000    1.325    1.325 /usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:446(urlopen)
-     10/1    0.001    0.000    1.322    1.322 /usr/local/lib/python2.7/site-packages/urllib3/connectionpool.py:319(_make_request)
-     10/1    0.001    0.000    1.322    1.322 /usr/local/lib/python2.7/httplib.py:1084(getresponse)
-     10/1    0.001    0.000    1.322    1.322 /usr/local/lib/python2.7/httplib.py:431(begin)
-     70/7    0.006    0.000    1.320    0.189 /usr/local/lib/python2.7/socket.py:410(readline)
-     10/1    0.002    0.000    1.319    1.319 /usr/local/lib/python2.7/httplib.py:392(_read_status)
-     10/1    0.000    0.000    1.319    1.319 /usr/local/lib/python2.7/site-packages/gevent/_sslgte279.py:448(recv)
-     10/1    0.986    0.099    1.299    1.299 /usr/local/lib/python2.7/site-packages/gevent/_sslgte279.py:298(read)
-       10    0.001    0.000    0.097    0.010 /usr/local/lib/python2.7/site-packages/requests/sessions.py:426(prepare_request)
-       10    0.001    0.000    0.043    0.004 /usr/local/lib/python2.7/site-packages/requests/models.py:307(prepare)
-       10    0.000    0.000    0.042    0.004 /usr/local/lib/python2.7/site-packages/requests/adapters.py:292(get_connection)
-       70    0.003    0.000    0.042    0.001 /usr/local/lib/python2.7/site-packages/requests/sessions.py:49(merge_setting)
-     10/1    0.001    0.000    0.040    0.040 /usr/local/lib/python2.7/site-packages/gevent/_socketcommon.py:382(_resolve_addr)
-     20/1    0.001    0.000    0.040    0.040 /usr/local/lib/python2.7/site-packages/gevent/_socketcommon.py:179(getaddrinfo)
-       10    0.000    0.000    0.038    0.004 /usr/local/lib/python2.7/site-packages/urllib3/poolmanager.py:267(connection_from_url)
-
-
-
-2019-03-18 12:35:49,607 - python27_1 - total_time=0:00:01.385698
-2019-03-18 12:35:49,608 - python27_1 - END
-+ set +x
-================================
+pyOpenSSL was originally created by Martin Sjögren because the SSL support in the standard library in Python 2.1 
+(the contemporary version of Python when the pyOpenSSL project was begun) was severely limited. Other OpenSSL wrappers 
+for Python at the time were also limited, though in different ways.
 {% endhighlight %}
 
-There are 2 important observations here:
-
-1. There are no **wait** calls! 
-2. The ```recv``` call is made from ```gevent``` and not ```pyopenssl```
+In my case, I wanted to do HTTPS verification (verify=True flag in requests). The latest [ssl](https://docs.python.org/3/library/ssl.html) library has these features.
 
 {% highlight text %}
-.... 1.319    1.319 /usr/local/lib/python2.7/site-packages/gevent/_sslgte279.py:448(recv)
+$ python2
+>>> import ssl
+>>> ssl.HAS_SNI
+True
+>>> import requests
+>>> requests.get('https://google.com', verify=True)
+<Response [200]>
 {% endhighlight %}
 
-The ```recv``` call is tied to the socket - The only way 2 different ```recv``` calls
-are being made is if in both cases, even though the code is the same, something is causing
-the socket class to change.
+But if you are using Python older than 2.7.9, then you have to use **pyopenssl** for the above features:
 
+The following commands are run on Python 2.7.8 interpreter without **pyopenssl**:
 
+{% highlight text %}
+$ ~/.pyenv/versions/2.7.8/bin/python
+>>> import ssl
+>>> ssl.HAS_SNI
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'HAS_SNI'
+>>> import requests
+>>> requests.get('https://google.com', verify=True)
+~/.pyenv/versions/2.7.8/lib/python2.7/site-packages/urllib3/util/ssl_.py:354: SNIMissingWarning: An HTTPS request has been made, but the SNI (Server Name Indication) extension to TLS is not available on this platform. This may cause the server to present an incorrect TLS certificate, which can cause validation failures. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  SNIMissingWarning
+~/.pyenv/versions/2.7.8/lib/python2.7/site-packages/urllib3/util/ssl_.py:150: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecurePlatformWarning
+~/.pyenv/versions/2.7.8/lib/python2.7/site-packages/urllib3/util/ssl_.py:150: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecurePlatformWarning
+<Response [200]>
+{% endhighlight %}
 
+If we install **pyopenssl** and retry verification, it goes through:
 
+{% highlight text %}
+$ ~/.pyenv/versions/2.7.8/bin/pip install PyOpenSSL
+$ ~/.pyenv/versions/2.7.8/bin/python
+>>> import ssl
+>>> ssl.HAS_SNI
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'HAS_SNI'
+>>> import requests
+>>> requests.get('https://google.com', verify=True)
+<Response [200]>
+{% endhighlight %}
 
-To be continued....
+But what if you need to use other features of **pyopenssl** related to certiificate management which may or may not be
+in the core **ssl** library? [gevent-openssl](https://github.com/mjs/gevent_openssl) has got you covered. It is a 
+**gevent** wrapper over **pyopenssl** so that you can use **pyopenssl** and prevent the re-patching scenario that we 
+ran into.
+
+However, installing **gevent-openssl** solves the problem of running fast with **pyopenssl** on Python2.7 but it doesn't
+do so for Python3.7. We will learn more about the same in my next post as we explore [Stage-3](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03) and [Stage-4](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/04).
