@@ -17,7 +17,7 @@ pre {
 ### Introduction
 
 If you have to download n pages of a site with the format ```https://site?page=n```
-where n = 1 to 100, the following snippet of code would be very slow as it would
+where n = 1 to 100 in python, the following snippet of code would be very slow as it would
 download them one by one.
 
 {% gist 6c904e3e6866c9c26e5f51d4883803dc %}
