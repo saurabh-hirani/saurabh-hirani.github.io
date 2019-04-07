@@ -124,7 +124,9 @@ run in these stages is going to stay the same.
 
 - Verdict: Python2.7 **may** run slow and Python3.7 **may** run fast.
 
-- Experiment output - [here.](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/00)
+- Experiment output 
+  - [Python2.7 profiling output](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/00#fetch-urls-with-profiling)
+  - [Python3.7 profiling output](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/00#fetch-urls-with-profiling-1)
 
 - Modules installed: Not applicable as we are not using virtualenv.
 
@@ -141,11 +143,13 @@ We will uncover this behaviour in more depth in the coming stages.
 
 - Verdict: [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27) runs fast and [ Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python37) runs fast.
 
-- Experiment output - [here.](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01)
+- Experiment output 
+  - [Python2.7 profiling output](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27#profile-code)
+  - [Python3.7 profiling output](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python37#profile-code)
 
 - Modules installed (same for both):
-  - [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27#check-installed-modules)
-  - [Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python37#check-installed-modules)
+  - [Python2.7 module list](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27#check-installed-modules)
+  - [Python3.7 module list](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python37#check-installed-modules)
 
 <a name="stage-1-main"></a>
 
@@ -153,13 +157,15 @@ We will uncover this behaviour in more depth in the coming stages.
 
 - Repo path: [here](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02)
 
-- Verdict: [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python27) runs **slow** and [ Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01/python37) runs **slow**.
+- Verdict: [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python27) runs **slow** and [ Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python37) runs **slow**.
 
-- Experiment output - [here.](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02)
+- Experiment output 
+  - [Python2.7 profiling output](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python27#profile-code)
+  - [Python3.7 profiling output](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python37#profile-code)
 
 - Modules installed (same for both):
-  - [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python27#check-installed-modules)
-  - [Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python37#check-installed-modules)
+  - [Python2.7 module list](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python27#check-installed-modules)
+  - [Python3.7 module list](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02/python37#check-installed-modules)
 
 ### Why is Stage-2 slow and Stage-1 fast with the same code?
 
