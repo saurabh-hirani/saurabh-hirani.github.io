@@ -27,23 +27,17 @@ module, wherein one would write code similar to the following to get speed gains
 
 {% gist b08b8b3eb98432d786e4d6e712c0d4c9 %}
 
+The above code runs faster because:
+
 **grequests = [gevent](http://www.gevent.org/) + [requests](http://docs.python-requests.org/en/master/)**
 
 where
 
 **gevent = [greenlet](https://greenlet.readthedocs.io/en/latest/) + [libev](http://software.schmorp.de/pkg/libev.html)**
 
-I won't even try to explain what gevent does in detail because the amazing 
-Kavya Joshi has explained it in depth in [this](https://www.youtube.com/watch?v=GunMToxbE0E) 
-awesome talk.
+At a very high level something like this happens:
 
-[This](http://blog.hownowstephen.com/post/50743415449/gevent-tutorial) equally excellent post walks
-through examples to explain how you can use gevent and explains the importance of [monkey-patching](https://en.wikipedia.org/wiki/Monkey_patch)
-in gevent. Here's a good [intro](http://blog.pythonisito.com/2012/08/gevent-monkey-patch.html) to gevent's monkey patching.
-
-But at a very high level something like this happens:
-
-When you do requests.get:
+**When you use requests without gevent:**
 
 1. Client opens a connection to the server
 2. The client sends the request.
@@ -51,7 +45,7 @@ When you do requests.get:
 4. Server responds.
 5. Client goes back to Point 1. for next URL.
 
-When you use grequests:
+**When you use grequests:**
 
 1. Client opens a connection to the server
 2. The client sends the request.
@@ -59,17 +53,49 @@ When you use grequests:
    by registering a callback which is fired when the server responds.
 4. Client does Point 1-3 for rest of the URLs.
 
-How does grequest accomplish this:
+**How does grequests accomplish this?**
 
 1. grequests [imports gevent](https://github.com/kennethreitz/grequests/blob/98ff519f39d7456457a8b6e083766dd6d6f66e0b/grequests.py#L14)
    and uses gevent to [monkey patch](https://github.com/kennethreitz/grequests/blob/98ff519f39d7456457a8b6e083766dd6d6f66e0b/grequests.py#L21) the
    standard lib.
 2. Now the underlying ```recv``` call is made non-blocking by gevent's library.
 
-This works generally but I ran into an issue which prevented gevent from taking over even after 
-using grequests.
+**What happens during monkey patching?**
 
-### The Setup
+<ol>
+<li> Run the following code in your Python2.7 interpreter console: </li>
+
+    {% highlight text %}
+    >>> import inspect
+    >>> import socket
+    >>> inspect.getsourcefile(socket.ssl)
+    '/usr/local/Cellar/python@2/2.7.15_3/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py'
+    {% endhighlight %}
+
+<li> Close and re-open your Python2.7 interpreter console and run similar code but after monkey patching through gevent: </li>
+    {% highlight text %}
+    >>> from gevent import monkey
+    >>> monkey.patch_all()
+    True
+    >>> import inspect
+    >>> import socket
+    >>> inspect.getsourcefile(socket.ssl)
+    '/usr/local/lib/python2.7/site-packages/gevent/_socket2.py'
+    {% endhighlight %}
+
+    As you noticed, <a href="https://github.com/gevent/gevent/blob/5f509a94382e9a04dd0dc1dbba63b14c499fb5f8/src/gevent/monkey.py#L975">monkey.patch_all</a> ensures 
+    that if we reference any modules that gevent patches, we get their gevent variants instead of the vanilla ones.
+</ol>
+
+To understand **gevent** in more detail go through:
+
+  - The awesome Kavya Joshi's amazing gevent depth talk [here](https://www.youtube.com/watch?v=GunMToxbE0E).
+  - [This](http://blog.hownowstephen.com/post/50743415449/gevent-tutorial) equally excellent post.
+
+Given this is how **gevent** works, using **grequests** to fetch 100 urls should do the trick. But as we will see in the
+later sections, that depends on the Python modules installed on your system.
+
+### Demo time!
 
 Clone [this repo](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests) which 
 has the sample setup. Run this [docker-compose command](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages#pre-requisites) to 
@@ -155,9 +181,9 @@ We will uncover this behaviour in more depth in the coming stages.
 
 ### Monkey patching and re-patching.
 
-This concept is best explained by leveraging our already existing Stage-1 and Stage-2 Python interpreter console. Keep in mind that
-Stage-2 had **pyopenssl** installed, while Stage-1 didn't. We will show the the following code for Python2.7 as the same
-output applies to Python3.7 also.
+Let's use the already existing Stage-1 and Stage-2 Python interpreter console's to clear this out. Keep in mind that
+Stage-2 had **pyopenssl** installed, while Stage-1 didn't. We will demo with Python2.7 as the same output applies to Python3.7 
+also.
 
 <ul>
   <li> Stage-1 Python2.7: </li>
@@ -351,7 +377,7 @@ AttributeError: 'module' object has no attribute 'HAS_SNI'
 <Response [200]>
 {% endhighlight %}
 
-But what if you need to use other features of **pyopenssl** related to certiificate management which may or may not be
+But what if you need to use other features of **pyopenssl** related to certificate management which may or may not be
 in the core **ssl** library? [gevent-openssl](https://github.com/mjs/gevent_openssl) has got you covered. It is a 
 **gevent** wrapper over **pyopenssl** so that you can use **pyopenssl** and prevent the re-patching scenario that we 
 ran into.
