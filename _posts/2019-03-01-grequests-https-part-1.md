@@ -237,7 +237,7 @@ also.
   <li> Get the interpreter console: </li>
 
     {% highlight text %}
-    ./docker-exec.sh test_grequests_python27_1 /usr/local/bin/python
+    ./docker-exec.sh test_grequests_python27_2 /usr/local/bin/python
     {% endhighlight %}
 
   <li> Import urllib3 and print the SSLContext: </li>
