@@ -18,8 +18,7 @@ Table of Contents
   * [Monkey patching and re-patching.](#monkey-patching-and-re-patching)
   * [Profiling Stage-1 and Stage-2 code.](#profiling-stage-1-and-stage-2-code)
   * [Should I just uninstall pyopenssl and be fast again?](#should-i-just-uninstall-pyopenssl-and-be-fast-again)
-
-
+  * [Summary](#summary)
 
 <style type="text/css">
 pre {
@@ -407,3 +406,9 @@ ran into.
 
 However, installing **gevent-openssl** solves the problem of running fast with **pyopenssl** on Python2.7 but it doesn't
 do so for Python3.7. We will learn more about the same in my [next post](http://localhost:4000/writing/2019/03/01/grequests-https-part-2) as we explore [Stage-3](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03) and [Stage-4](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/04).
+
+### Summary
+
+- [Stage-0](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/00) is **unpredictable** because we are not using virtualenv.
+- [Stage-1](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01) verifies that the absence of **pyopenssl** makes both Python 2.7 and Python 3.7 **fast**.
+- [Stage-2](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02) verifies that the presence of **pyopenssl** makes both Python 2.7 and Python 3.7 **slow**.
