@@ -157,10 +157,13 @@ speed gains for Python3.7. Find out more in the coming sections which explore St
 
 </ul>
 
+I have opened a [Pull request](https://github.com/mjs/gevent_openssl/pull/15) to add this functionality to gevent_openssl.
+
+
 ### Summary
 
 - [Stage-0](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/00) is **unpredictable** because we are not using virtualenv.
 - [Stage-1](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/01) verifies that the absence of **pyopenssl** makes both Python 2.7 and Python 3.7 **fast**.
 - [Stage-2](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/02) verifies that the presence of **pyopenssl** makes both Python 2.7 and Python 3.7 **slow**.
 - [Stage-3](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03) verifies that the presence of **gevent_openssl** with **pyopenssl** makes Python 2.7 **fast** but Python 3.7 **slow**.
-- [Stage-3](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03) patches the existing **gevent_openssl** to make Python 3.7 **fast**.
+- [Stage-3](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/04) patches the existing **gevent_openssl** to make Python 3.7 **fast**.
