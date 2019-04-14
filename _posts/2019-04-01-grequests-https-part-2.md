@@ -70,7 +70,7 @@ speed gains for Python3.7. Find out more in the coming sections which explore St
   - [Python2.7 module list](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03/python27#check-installed-modules)
   - [Python3.7 module list](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03/python37#check-installed-modules)
 
-- Verdict: [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03/python27) runs **slow** and [ Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03/python37) runs **slow**.
+- Verdict: [Python2.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03/python27) runs **fast** and [ Python3.7](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03/python37) runs **slow**.
 
 - Experiment output 
   - [Python2.7 profiling output](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03/python27#profile-code)
