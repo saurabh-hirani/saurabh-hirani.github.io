@@ -405,7 +405,7 @@ in the core **ssl** library? [gevent-openssl](https://github.com/mjs/gevent_open
 ran into.
 
 However, installing **gevent-openssl** solves the problem of running fast with **pyopenssl** on Python2.7 but it doesn't
-do so for Python3.7. We will learn more about the same in my [next post](http://localhost:4000/writing/2019/03/01/grequests-https-part-2) as we explore [Stage-3](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03) and [Stage-4](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/04).
+do so for Python3.7. We will learn more about the same in my [next post](http://saurabh-hirani.github.io/writing/2019/04/01/grequests-https-part-2) as we explore [Stage-3](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/03) and [Stage-4](https://github.com/saurabh-hirani/grequests-https-python-27-37-tests/tree/master/stages/04).
 
 ### Summary
 
