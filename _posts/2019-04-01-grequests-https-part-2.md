@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The curios case of grequests and https - Part 2
+title: The curious case of grequests and https - Part 2
 tags:
 - python
 ---
