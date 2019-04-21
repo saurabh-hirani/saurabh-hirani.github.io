@@ -1,6 +1,6 @@
-- name: "The curious case of slow/fast grequests code - preview"
+- name: "The curious case of slow/fast grequests code - an introduction"
   date: "Sunday, April 29, 2019"
-  description: Preview talk.
+  description: 
   embed_url: "//www.youtube.com/embed/6bMCMfyZmdg"
   links:
     - label: "Summary"
