@@ -1,6 +1,6 @@
 - name: "The curious case of slow/fast grequests code - preview"
   date: "Sunday, April 29, 2019"
-  description: Preview talk for the proposal https://in.pycon.org/cfp/2019/proposals/the-curious-case-of-slowfast-grequests-code~bY9nb/
+  description: Preview talk.
   embed_url: "//www.youtube.com/embed/6bMCMfyZmdg"
   links:
     - label: "Summary"
