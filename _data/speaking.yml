@@ -1,3 +1,10 @@
+- name: "The curious case of slow/fast grequests code - preview"
+  date: "Sunday, April 29, 2019"
+  description: Preview talk for the proposal https://in.pycon.org/cfp/2019/proposals/the-curious-case-of-slowfast-grequests-code~bY9nb/
+  embed_url: "//www.youtube.com/embed/6bMCMfyZmdg"
+  links:
+    - label: "Summary"
+      url: "https://in.pycon.org/cfp/2019/proposals/the-curious-case-of-slowfast-grequests-code~bY9nb/"
 - name: "Monitoring transition talk - an introduction"
   date: "Tuesday, April 7, 2015"
   description: An introduction to the full talk below
