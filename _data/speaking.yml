@@ -1,18 +1,15 @@
-- name: "The curious case of slow/fast grequests code - an introduction"
-  date: "Sunday, April 29, 2019"
-  description: 
-  embed_url: "//www.youtube.com/embed/6bMCMfyZmdg"
+- name: "The curious case of slow/fast grequests code"
+  date: "Thursday, Oct 10, 2019"
+  description: An interesting debugging story where the same codebase ran slow/fast depending on Python2.7/Python3.7 module ecosystem.
+  embed_url: "//www.youtube.com/embed/gsRDYi40MsU"
   links:
-    - label: "Summary"
-      url: "https://in.pycon.org/cfp/2019/proposals/the-curious-case-of-slowfast-grequests-code~bY9nb/"
-- name: "Monitoring transition talk - an introduction"
-  date: "Tuesday, April 7, 2015"
-  description: An introduction to the full talk below
-  embed_url: "//www.youtube.com/embed/CjCkPrPEqWU"
-  links:
-    - label: "Summary"
-      url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
-- name: "Monitoring transition - full talk"
+    - label: "Talk proposal video"
+      url: "https://www.youtube.com/watch?v=6bMCMfyZmdg"
+    - label: "Slides"
+      url: "http://saurabh-hirani.github.io/slides/decks/grequests-https-talk/main.html#/"
+    - label: "Github repo"
+      url: "https://github.com/saurabh-hirani/grequests-https-python-27-37-tests"
+- name: "Monitoring transition"
   date: "Thursday, April 21, 2016"
   description: |
     Everyone talks the benefits of having an automated monitoring system in place - one which can discover
@@ -24,18 +21,13 @@
   links:
     - label: "Summary"
       url: "https://rootconf.talkfunnel.com/2016/13-the-transition-manual-automated-distributed-monito"
+    - label: "Talk proposal video"
+      url: "https://www.youtube.com/watch?v=CjCkPrPEqWU"
     - label: "Slides"
       url: "http://saurabh-hirani.github.io/slides/monitoring-transition.html#/"
     - label: "Github repo"
       url: "https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition"
-- name: "Inframer talk - an introduction"
-  date: "Tuesday, April 7, 2015"
-  description: An introduction to the full talk below
-  embed_url: "//www.youtube.com/embed/IXPLuzZlwhM"
-  links:
-    - label: "Summary"
-      url: "https://rootconf.talkfunnel.com/2015/13-inframer-know-thy-infra"
-- name: "Inframer - full talk"
+- name: "Inframer"
   date: "Friday, May 15, 2015"
   description: |
     Inframer is a tool to collect, store and analyze your infrastructure data. 
@@ -43,6 +35,8 @@
   links:
     - label: "Summary"
       url: "https://rootconf.talkfunnel.com/2015/13-inframer-know-thy-infra"
+    - label: "Talk proposal video"
+      url: "https://www.youtube.com/watch?v=IXPLuzZlwhM"
     - label: "Slides"
       url: "http://go-talks.appspot.com/github.com/saurabh-hirani/inframer/docs/inframer-talk-rootconf.slide#1"
     - label: "Github repo"
