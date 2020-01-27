@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Terraform AWS Elasticache Redis module for multiple setups
+title: Terraform AWS Elasticache Redis module for AZ attacks
 tags:
 - AWS, terraform
 ---
