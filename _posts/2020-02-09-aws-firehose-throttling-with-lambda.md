@@ -2,7 +2,7 @@
 layout: post
 title: AWS Kinesis Firehose throttling with transformation Lambda
 tags:
-- AWS, terraform
+- AWS
 ---
 
 In my [previous post](http://saurabh-hirani.github.io/writing/2020/02/08/terraform-aws-firehose-elasticsearch) I wrote about a Terraform module which can be used to setup a
