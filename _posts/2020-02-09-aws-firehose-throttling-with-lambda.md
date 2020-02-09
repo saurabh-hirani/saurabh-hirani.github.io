@@ -132,7 +132,7 @@ Concurrency = 4 => 1200 MB per min
 As we cannot set concurrency in floating point - we should use concurrency as **4** which will give us 1200 MB per min => 1.64 TB per day - which is close
 to our goal. We can also go lower to concurrency of **3** to get 900 MB per min => 1.23 TB per day.
 
-The above calculation can easily be converted to a script, which I have added [here](https://github.com/saurabh-hirani/bin/blob/master/aws-lambda-calc-concurrency)
+The above calculation can easily be converted to a script, which I have added [here](https://github.com/saurabh-hirani/bin/blob/master/aws-lambda-calc-concurrency).
 
 It can be invoked as
 
