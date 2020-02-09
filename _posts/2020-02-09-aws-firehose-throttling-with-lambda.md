@@ -179,7 +179,7 @@ echo 1258291200.00 | bytes-to-GB
 1.17
 ```
 
-where with
+which means that with
 
 Lambda concurrency = 4
 
