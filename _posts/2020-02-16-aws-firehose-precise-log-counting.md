@@ -45,8 +45,8 @@ these [settings](https://aws.amazon.com/kinesis/data-firehose/faqs/).
 The actual 720,000 logs might reach the destination at 0201 hrs - but that does not mean that they were not received. It just means that they were
 **eventually** received.
 
-However, if you search for a day's worth of data in Elasticsearch e.g. How many logs did Elasticsearch receive on 29th March 2019 - you will get a
-precise answer. Considering that you use a daily index - the no. of logs in the index for 29-03-2019 will not grow, because even if AWS Kinesis Firehose,
+However, if you search for a day's worth of data in Elasticsearch e.g. How many logs did Elasticsearch receive on 29th March 2020 - you will get a
+precise answer. Considering that you use a daily index - the no. of logs in the index for 29-03-2020 will not grow, because even if AWS Kinesis Firehose,
 while processing the data, buffered the logs, the logs were delivered to 29-03-2020 index.
 
 This means that you can count the logs generated at Account-1 AWS Lambda for 29-03-2020 and do the same for the logs received at Account-2 Elasticsearch to
