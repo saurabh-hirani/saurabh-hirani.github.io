@@ -1,10 +1,28 @@
-.post {
+.post .post-content {
   img {
     display: block;
-    max-width: 100%;
+    max-width: 100% !important;
     max-height: 500px;
-    height: auto;
+    height: auto !important;
+    width: auto !important;
     margin: 0 auto;
     padding: 0.6em 0;
+  }
+
+  .large-image {
+    @media (min-width: 64em) {
+      position: relative;
+      left: -50%;
+
+      img {
+        max-width: 200% !important;
+      }
+    }
+  }
+}
+
+table.no-wrap {
+  th, td {
+    white-space: nowrap;
   }
 }

@@ -184,14 +184,6 @@ Here's the [README][14] for the source repo of this `docker` image.
 
 **Hope this helps! Keep forking.**
 
-## The Remote Lab DevOps Offerings:
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/h9h9GNjX5Gncpi" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/bhalothia/the-remote-lab-devops-offerings" title="The Remote Lab DevOps Offerings" target="_blank">The Remote Lab DevOps Offerings</a> </strong> from <strong><a href="//www.slideshare.net/bhalothia" target="_blank">Virendra Bhalothia</a></strong> </div>
-
-Please leave your comments below if you have any doubts or questions.
-
-**Need DevOps help? - Get in touch with** [The Remote Lab][1]
-[LinkedIn][2] [Facebook][3] [Github][4] [Twitter][5]
-
 
   [1]: http://theremotelab.com
   [2]: https://www.linkedin.com/company/the-remote-lab
@@ -208,4 +200,4 @@ Please leave your comments below if you have any doubts or questions.
   [13]: http://crosbymichael.com/dockerfile-best-practices.html
   [14]: https://github.com/TheRemoteLab/docker-rundeck/blob/master/README.md
   [15]: http://i.giphy.com/OP7kIfBat5sGY.gif
-  [16]: https://d21ii91i3y6o6h.cloudfront.net/gallery_images/from_proof/1026/large/1396373089/docker.png
+  [16]: /assets/img/blog/dockerfile/docker_logo.png

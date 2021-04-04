@@ -20,7 +20,7 @@ For example: `.bashrc`, `.gitconfig`,`.gitigignore`,`.vimrc` etcetera.
 
 ![dotfiles][11]
 
-**I believe in putting absolutely everything in version control** and have introduced and enforced the same while consulting DevOps for many of our clients at  [The Remote Lab][1].  
+**I believe in putting absolutely everything in version control** and have introduced and enforced the same in every project I have worked for.  
 
 Then **why not** my dotfiles? ~~I was doing something wrong.~~
 
@@ -137,13 +137,6 @@ Sharing my `dotfiles` remote repositories:
 
  **Hope this helps! Keep forking.**
 
- ## The Remote Lab DevOps Offerings:
- <iframe src="//www.slideshare.net/slideshow/embed_code/key/h9h9GNjX5Gncpi" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/bhalothia/the-remote-lab-devops-offerings" title="The Remote Lab DevOps Offerings" target="_blank">The Remote Lab DevOps Offerings</a> </strong> from <strong><a href="//www.slideshare.net/bhalothia" target="_blank">Virendra Bhalothia</a></strong> </div>
-
- Please leave your comments below if you have any doubts or questions.
-
-**Need DevOps help? - Get in touch with** [The Remote Lab][1]
-[LinkedIn][2] [Facebook][3] [Github][4] [Twitter][5]
 
 Credits: [John Glovier][8] for this beautiful [dotfiles logo][9]
 
@@ -157,4 +150,4 @@ Credits: [John Glovier][8] for this beautiful [dotfiles logo][9]
   [8]: https://twitter.com/jglovier
   [9]: https://dribbble.com/shots/1466768-dotfiles-logo
   [10]: http://38.media.tumblr.com/tumblr_lzpoecnb781rolf0zo1_500.gif
-  [11]: https://d13yacurqjgara.cloudfront.net/users/3093/screenshots/1466768/dotfiles-logo_1x.png                    
+  [11]: /assets/img/blog/dotfiles/dotfiles_logo.png

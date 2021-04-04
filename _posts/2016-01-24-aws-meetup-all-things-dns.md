@@ -40,15 +40,6 @@ Bravo Calm!
 
 We have promised ourselves to attend/sponsor more and more meet-ups this year. See you in the next one. ;)
 
-## The Remote Lab DevOps Offerings:
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/h9h9GNjX5Gncpi" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/bhalothia/the-remote-lab-devops-offerings" title="The Remote Lab DevOps Offerings" target="_blank">The Remote Lab DevOps Offerings</a> </strong> from <strong><a href="//www.slideshare.net/bhalothia" target="_blank">Virendra Bhalothia</a></strong> </div>
-
-Please leave your comments below if you have any doubts or questions.
-
-
-**Need DevOps help? - Get in touch with** [The Remote Lab][1]
-[LinkedIn][2] [Facebook][3] [Github][4] [Twitter][5]
-
 
 
   [1]: http://theremotelab.com

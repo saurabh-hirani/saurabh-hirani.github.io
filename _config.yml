@@ -1,21 +1,23 @@
 # Website settings
 title: Experiences and Opinions
-url: "http://bhalothia.io"
+url: "https://bhalothia.io"
 
 # Internal nav
 nav:
   main:
-    writing: "/writing"
-    speaking: "/speaking"
-  writing:
-    all: "/writing"
-    popular: "/writing/popular"
-    tags: "/writing/tags"
+    blog: "/blog"
+    # speaking: "/speaking"
+    projects: "/projects"
+  blog:
+    all: "/blog"
+    # popular: "/blog/popular"
+    tags: "/blog/tags"
+    rss: "/feed.xml"
 
 # Bio settings
 name: "Virendra Singh Bhalothia"
-slogan: "I'm a DevOps Strategist and Enabler. Currently helping organizations in their DevOps transformation journey via <a href='http://theremotelab.com' target='_blank'>TRL</a>."
-description: "My experiences and opinions."
+slogan: "I'm a Systems Engineer based out of Germany. I have over a decade of experience working on various phases of SDLC and most prominently in treating Infrastructure as Code and Site Reliability Operations."
+description: "My Tech Rants!"
 thumbnail_path: "tdb.jpg"
 website_repo_url: "https://github.com/bhalothia/bhalothia.github.io"
 
@@ -34,11 +36,16 @@ contact_urls:
     url: "https://github.com/bhalothia/"
     label: "GitHub"
     icon: "github-square"
+  email:
+    url: "mailto:virendra@bhalothia.io"
+    label: "Email"
+    value: "virendra@bhalothia.io"
+    icon: "envelope-square"    
 
 # Jekyll build settings
 paginate: 10
-paginate_path: "/writing/page:num"
-permalink: "/writing/:year/:month/:day/:title"
+paginate_path: "/blog/page:num"
+permalink: "/blog/:year/:month/:day/:title"
 sass:
   sass_dir: "/assets/css"
   style: :compressed
@@ -49,3 +56,5 @@ timezone: 'Europe/London'
 gems:
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-paginate
+  
