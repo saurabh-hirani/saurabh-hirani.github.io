@@ -34,7 +34,7 @@ yourself accountable for your learning, enforcing mental reminders so that you d
 easy mouse-clicky shortcuts that you wanted to escape from in the first place. These reminders can be - avoiding
 using arrow keys when learning `vim` OR avoiding the temptation of using `grep` when learning `jq`.
 
-Reminders like alarms, are often snoozed and seldom revived. They are your shell's new year resolutions.
+Mental reminders, like alarms, are often snoozed and seldom revived. They are your shell's new year resolutions.
 And it is 1st January everytime you see someone whip out a clever, clean, cli solution and you take that
 dreaded vow again - "I **will** master tool X." You throw away your mouse, camp in the wild woods of the cli and learn
 some survival skills. But life happens - projects change, roles change, governments change (well...) and you lose track. You still
