@@ -61,7 +61,7 @@ Here's my first instalment:
 
 **Problem:**
 
-Dump EC2 instances of a region having `tag=Name` in a nicely formatted cli table
+Dump EC2 instances of a region having `tag=Name` in a nicely formatted cli table.
 
 **Sample output:**
 
@@ -87,7 +87,7 @@ Dump EC2 instances of a region having `tag=Name` in a nicely formatted cli table
 
 **Key takeways:**
 
-- `jq` is powerful
+- `jq` is powerful.
 - Check [csv2table](https://github.com/saurabh-hirani/bin/blob/master/csv2table) - good enough to convert csv to table using the
   very awesome [PrettyTable](https://pypi.org/project/prettytable/]) Python module.
 - Use `--filters` flag to reduce the output to running instances only e.g. `aws ec2 describe-instances --filters 'Name=instance-state-name,Values=running'`
