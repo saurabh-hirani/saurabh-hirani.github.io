@@ -90,7 +90,8 @@ Dump EC2 instances of a region having `tag=Name` in a nicely formatted cli table
 - `jq` is powerful
 - Check [csv2table](https://github.com/saurabh-hirani/bin/blob/master/csv2table) - good enough to convert csv to table using the
   very awesome [PrettyTable](https://pypi.org/project/prettytable/]) Python module.
-- Use `--filters` flag to reduce the output to running instances only e.g. `aws ec2 describe-instances --filters Name=instance-state-name,Values=running'`
-- We can also use aws command line [query](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html) to filter more, but here's the
-  catch - the `--query` param takes a [jmespath](https://jmespath.org/) query. Although, I started with using jmespath due to it's availability as
-  both a cli and a programming language module, I had to swich gears to [jq](https://stedolan.github.io/jq/) because most of json query google searches yielded `jq`. Not an ideal excuse, but one life is too short to learn both `jmespath` and `jq`.
+- Use `--filters` flag to reduce the output to running instances only e.g. `aws ec2 describe-instances --filters 'Name=instance-state-name,Values=running'`
+- We can also use aws command line [--query](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html) param to filter on the server
+  side, but here's the catch - the `--query` param takes a [jmespath](https://jmespath.org/) query. Although, I started with using jmespath due
+  to it's availability as both a cli and a programming language module, I had to swich gears to [jq](https://stedolan.github.io/jq/) because most
+  of json query google searches yielded `jq`. Not an ideal excuse, but one life is too short to learn both `jmespath` and `jq`.
