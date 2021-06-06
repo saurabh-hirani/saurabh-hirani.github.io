@@ -10,7 +10,7 @@ Problem-1:
 
 1. Find out all EC2 instances which are in a public subnet.
 
-Few possible solutions in decreasing order of developer productivity:
+Few possible solutions in increasing order of developer productivity:
 
 1. Go to the AWS console, find public subnet ids, and filter AWS EC2 instances by those ids.
 
@@ -63,6 +63,8 @@ Learning-2 is not worth relearning all the times and yet, Google runs on search 
 
 This is where [q](http://harelba.github.io/q/) comes in - all guns blazing.
 
+A solution, which decouples data extraction and data analysis:
+
   ```sh
   ./aws-ec2-describe-instances-csv | \
   q -O -H -d',' 'select launch_time from - where strftime("%Y%m%d", launch_time) < "20210101"'
@@ -94,8 +96,7 @@ answer it has reduced.
 
 But the output is an ugly mess of a CSV!!
 
-This is where I shamlessly plug in a hacky tool I wrote which made my terminal CSV cleaner in a lot of ways - [csv2table](https://github.com/saurabh-hirani/bin/blob/master/csv2table). This has
-grown quite a bit since its [last appearance](http://localhost:4000/writing/2021/04/23/what-happens-on-cli)
+This is where I shamelessly plug in a wrapper I wrote over the amazing [PrettyTable](https://pypi.org/project/prettytable/) module which made my terminal CSV cleaner in a lot of ways - [csv2table](https://github.com/saurabh-hirani/bin/blob/master/csv2table). This has grown quite a bit since its [last appearance](http://localhost:4000/writing/2021/04/23/what-happens-on-cli)
 
   ```sh
   ./aws-ec2-describe-instances-csv | \
@@ -116,17 +117,17 @@ grown quite a bit since its [last appearance](http://localhost:4000/writing/2021
 
 - Learnings:
 
-1. `aws-ec2-describe-instances-csv` dumps the aws output in CSV. Does not take the responsibility of processing.
+1. `aws-ec2-describe-instances-csv` dumps the AWS output in CSV. Does not take the responsibility of processing.
 
 2. `q` allows the user to write SQL like familiar syntax to extract data. Does not take the responsibility of displaying the data nicely.
 
 3. `csv2table` takes CSV and displays in a clean terminal tabular format.
 
 
-Combining these 3 tools with the ever-powerful '|' Linux pipeline, can make for some interesting patterns for extracting data. In the next post, we will see how this pattern, helps answer some
+Combining these 3 tools with the ever-powerful '|' Linux pipeline, can make for some interesting patterns for extracting data. In the next post, we will see how this pattern helps answer some
 critical questions about AWS security groups.
 
-In closing, to call out the giants whose shoulders support us, this post demonstrates a simple example of the following two principles from the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)
+In closing, as a shout out to the giants whose shoulders we stand upon, this post demonstrates a simple example of the following two principles from the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy):
 
 1. Make each program do one thing well.
 2. Expect the output of every program to become the input to another, as yet unknown, program.
