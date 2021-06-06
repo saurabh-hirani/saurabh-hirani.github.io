@@ -28,7 +28,7 @@ practice. Assumptions are often broken when new tools replace older ones. For ex
 the flexibility to adopt new tools and the perseverance to explore the old ones to their depths
 before chasing the next shiny new thing.
 
-The second part - perseverance, can only be built with discpline. By discipline, I do not mean the
+The second part - perseverance, can only be built with discipline. By discipline, I do not mean the
 one that is the foundation of flame wars like memacs is infinitely better than youvim. I mean holding
 yourself accountable for your learning, enforcing mental reminders so that you don't fall back into the
 easy mouse-clicky shortcuts that you wanted to escape from in the first place. These reminders can be - avoiding
