@@ -6,7 +6,7 @@ tags:
 - cli
 ---
 
-Problem-1:
+Problem:
 
 1. Find out all EC2 instances which are in a public subnet.
 
