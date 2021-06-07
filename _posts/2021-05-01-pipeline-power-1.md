@@ -43,7 +43,7 @@ One might say that in this case the Python program is simpler than the jq cli. H
 used to jq and its myriad filters is useful for getting quick answers. These kind of problems serve
 as opportunities to build that muscle memory.
 
-This post is about the 4th approach - take the dataset which answers your current query and see it hides some other queries worth answering. 
+This post is about the 4th approach - take the dataset which answers your current query and see if it hides some other queries worth answering.
 If it does, solve for making the dataset queryable rather than writing one-off solutions.
 
 Problem-2:
@@ -73,9 +73,9 @@ A solution, which decouples data extraction and data analysis:
   where [./aws-ec2-describe-instances-csv](https://github.com/saurabh-hirani/bin/blob/master/aws-ec2-describe-instances-csv) will keep on growing with
   comma separated fields as I keep on encountering more SQL-like problem scenarios.
 
-But you did have to learn about **strftime** - didn't you? - this question might be posed by the perceptive reader and those who I didn't pay to read this blog.
-Yes - but the point is that instead of employing logic of what to do with the data in the tool that queries the data, by dumping the output in CSV, we have made
-the data queryable in a lot of ways. The same CSV dump can answer queries like:
+But you did have to learn about **strftime** - didn't you? - this question might be posed by the perceptive reader. Yes - but the point is that instead of
+employing logic of what to do with the data in the tool that queries the data, by dumping the output in CSV, we have made the data queryable in a lot
+of ways. The same CSV dump can answer queries like:
 
 1. Give me all the instances whose tags match 'kuber%'
 
@@ -96,7 +96,7 @@ answer it has reduced.
 
 But the output is an ugly mess of a CSV!!
 
-This is where I shamelessly plug in a wrapper I wrote over the amazing [PrettyTable](https://pypi.org/project/prettytable/) module which made my terminal CSV cleaner in a lot of ways - [csv2table](https://github.com/saurabh-hirani/bin/blob/master/csv2table). This has grown quite a bit since its [last appearance](http://localhost:4000/writing/2021/04/23/what-happens-on-cli)
+This is where I shamelessly plug in a wrapper I wrote over the amazing [PrettyTable](https://pypi.org/project/prettytable/) module which made my terminal CSV cleaner in a lot of ways - [csv2table](https://github.com/saurabh-hirani/bin/blob/master/csv2table). This has grown quite a bit since its [last appearance](http://saurabh-hirani.github.io/writing/2021/04/23/what-happens-on-cli)
 
   ```sh
   ./aws-ec2-describe-instances-csv | \
