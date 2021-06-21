@@ -124,8 +124,7 @@ This is where I shamelessly plug in a wrapper I wrote over the amazing [PrettyTa
 3. `csv2table` takes CSV and displays in a clean terminal tabular format.
 
 
-Combining these 3 tools with the ever-powerful '|' Linux pipeline, can make for some interesting patterns for extracting data. In the next post, we will see how this pattern helps answer some
-critical questions about AWS security groups.
+Combining these 3 tools with the ever-powerful '|' Linux pipeline, can make for some interesting patterns for extracting data.
 
 In closing, as a shout out to the giants whose shoulders we stand upon, this post demonstrates a simple example of the following two principles from the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy):
 
